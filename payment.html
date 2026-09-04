@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Payment | Local Export+</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-rose-50 via-pink-50 to-neutral-50 text-gray-800 font-sans scroll-smooth min-h-screen flex flex-col">
+
+    <!-- FLOATING MATTE HEADER -->
+    <div class="p-4">
+        <header class="bg-white/90 backdrop-blur-md text-rose-950 shadow-[0_8px_30px_rgb(225,29,72,0.04)] rounded-3xl md:rounded-full sticky top-4 z-50 transition-all border border-rose-100">
+            <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+                
+                <!-- BRAND, BACK BUTTON & MOBILE TOGGLE -->
+                <div class="w-full md:w-auto flex justify-between items-center">
+                    <div class="flex items-center gap-3">
+                        <button onclick="history.back()" class="bg-rose-100 hover:bg-rose-200 text-rose-900 px-3.5 py-1.5 rounded-full font-bold text-xs transition-all flex items-center gap-1 shadow-sm cursor-pointer">
+                            <span>←</span> Back
+                        </button>
+                        <a href="index.html" class="text-2xl font-black tracking-wide bg-gradient-to-r from-rose-700 to-pink-600 bg-clip-text text-transparent flex items-center gap-1">
+                            Local Export<span class="text-rose-500 text-3xl">+</span>
+                        </a>
+                    </div>
+                    <!-- Mobile Hamburger Button -->
+                    <button onclick="toggleMobileMenu()" class="md:hidden bg-rose-50 text-rose-800 p-2.5 rounded-xl border border-rose-100 font-bold text-lg">
+                        ☰
+                    </button>
+                </div>
+                
+                <!-- DESKTOP NAV BAR (Standardized Layout) -->
+                <nav class="space-x-2 hidden md:flex items-center font-bold text-sm">
+                    <a href="index.html" class="trans-text hover:text-rose-600 transition-all px-3 py-2" data-en="Home" data-ms="Laman Utama" data-zh="首页" data-ja="ホーム">Home</a>
+                    <a href="guidelines.html" class="trans-text hover:text-rose-600 transition-all px-3 py-2" data-en="Guidelines" data-ms="Garisan Panduan" data-zh="指南" data-ja="ガイドライン">Guidelines</a>
+                    <a href="buyer-profile.html" class="trans-text hover:text-rose-600 transition-all px-3 py-2" data-en="My Account" data-ms="Akaun Saya" data-zh="我的账户" data-ja="マイアカウント">My Account</a>
+                    
+                    <!-- CLICKABLE MORE PAGES DROPDOWN -->
+                    <div class="relative">
+                        <button onclick="toggleMoreMenu(event)" class="bg-rose-50 hover:bg-rose-100 text-rose-800 px-4 py-2 rounded-full shadow-sm flex items-center gap-1 transition-all border border-rose-100 font-bold text-sm cursor-pointer">
+                            More ▾
+                        </button>
+                        <div id="moreDropdown" class="absolute right-0 mt-2 w-52 bg-white border border-rose-100 rounded-2xl shadow-xl hidden flex-col p-2 z-50 gap-1">
+                            <a href="catalog.html" class="block px-4 py-2.5 text-xs font-bold text-gray-700 hover:bg-rose-50 hover:text-rose-900 rounded-xl transition-all">Catalog</a>
+                            <a href="checkout.html" class="block px-4 py-2.5 text-xs font-bold text-gray-700 hover:bg-rose-50 hover:text-rose-900 rounded-xl transition-all">My Cart</a>
+                            <a href="tracking.html" class="block px-4 py-2.5 text-xs font-bold text-gray-700 hover:bg-rose-50 hover:text-rose-900 rounded-xl transition-all">Track Order</a>
+                            <a href="about.html" class="block px-4 py-2.5 text-xs font-bold text-gray-700 hover:bg-rose-50 hover:text-rose-900 rounded-xl transition-all">About Us</a>
+                            <a href="register.html" class="block px-4 py-2.5 text-xs font-bold text-gray-700 hover:bg-rose-50 hover:text-rose-900 rounded-xl transition-all">Seller Register</a>
+                            <a href="buyer-register.html" class="block px-4 py-2.5 text-xs font-bold text-gray-700 hover:bg-rose-50 hover:text-rose-900 rounded-xl transition-all">Buyer Sign Up</a>
+                        </div>
+                    </div>
+                    
+                    <!-- TRANSLATE WIDGET -->
+                    <div class="bg-white px-3 py-1.5 rounded-full flex items-center gap-2 text-xs border-2 border-rose-100 shadow-sm ml-2">
+                        <span>Language</span>
+                        <select id="globalLangSelect" onchange="changeGlobalLanguage()" class="bg-transparent text-rose-950 font-black focus:outline-none cursor-pointer">
+                            <option value="en">English</option>
+                            <option value="ms">Bahasa Melayu</option>
+                            <option value="zh">中文</option>
+                            <option value="ja">日本語</option>
+                        </select>
+                    </div>
+                </nav>
+
+                <!-- MOBILE DROPDOWN MENU PANEL (Standardized) -->
+                <div id="mobileMenu" class="w-full hidden md:hidden flex-col gap-2 pt-2 pb-2 border-t border-rose-100 font-bold text-sm text-left">
+                    <a href="index.html" class="px-4 py-2.5 text-gray-700 hover:bg-rose-50 rounded-xl">Home</a>
+                    <a href="guidelines.html" class="px-4 py-2.5 text-gray-700 hover:bg-rose-50 rounded-xl">Guidelines</a>
+                    <a href="buyer-profile.html" class="px-4 py-2.5 text-gray-700 hover:bg-rose-50 rounded-xl">My Account</a>
+                    <a href="catalog.html" class="px-4 py-2.5 text-gray-700 hover:bg-rose-50 rounded-xl">Catalog</a>
+                    <a href="checkout.html" class="px-4 py-2.5 text-gray-700 hover:bg-rose-50 rounded-xl">My Cart</a>
+                    <a href="tracking.html" class="px-4 py-2.5 text-gray-700 hover:bg-rose-50 rounded-xl">Track Order</a>
+                    <a href="about.html" class="px-4 py-2.5 text-gray-700 hover:bg-rose-50 rounded-xl">About Us</a>
+                    <a href="register.html" class="px-4 py-2.5 text-gray-700 hover:bg-rose-50 rounded-xl">Seller Register</a>
+                    <a href="buyer-register.html" class="px-4 py-2.5 text-gray-700 hover:bg-rose-50 rounded-xl">Buyer Sign Up</a>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <!-- MAIN PAYMENT CONTAINER -->
+    <main class="py-8 px-6 max-w-5xl mx-auto w-full space-y-8 flex-grow">
+        
+        <div class="text-center">
+            <h1 class="trans-text text-xl sm:text-2xl font-black text-rose-600 tracking-wide pb-2 border-b-2 border-rose-200 inline-block"
+                data-en="Secure Payment Gateway" data-ms="Gerbang Pembayaran Selamat" data-zh="安全支付网关" data-ja="安全な支払いゲートウェイ">Secure Payment Gateway</h1>
+            <p class="text-gray-500 text-xs font-bold mt-2">🔒 End-to-end encrypted transaction</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            
+            <!-- LEFT: PAYMENT METHODS -->
+            <div class="md:col-span-2 space-y-6">
+                
+                <!-- Payment Tabs -->
+                <div class="bg-white/90 backdrop-blur-md p-6 rounded-[2rem] shadow-sm border border-rose-100">
+                    <h3 class="trans-text font-black text-rose-950 text-sm mb-4" data-en="Select Payment Method" data-ms="Pilih Kaedah Pembayaran" data-zh="选择付款方式" data-ja="お支払い方法を選択">Select Payment Method</h3>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <label class="cursor-pointer">
+                            <input type="radio" name="paymentMethod" class="peer hidden" checked>
+                            <div class="border-2 border-rose-100 rounded-2xl p-4 text-center peer-checked:border-rose-500 peer-checked:bg-rose-50 transition-all">
+                                <div class="text-xl mb-1">💳</div>
+                                <div class="text-xs font-bold text-rose-950">Credit / Debit Card</div>
+                            </div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="paymentMethod" class="peer hidden">
+                            <div class="border-2 border-rose-100 rounded-2xl p-4 text-center peer-checked:border-rose-500 peer-checked:bg-rose-50 transition-all">
+                                <div class="text-xl mb-1">🏦</div>
+                                <div class="text-xs font-bold text-rose-950">FPX Online Banking</div>
+                            </div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="paymentMethod" class="peer hidden">
+                            <div class="border-2 border-rose-100 rounded-2xl p-4 text-center peer-checked:border-rose-500 peer-checked:bg-rose-50 transition-all">
+                                <div class="text-xl mb-1">📱</div>
+                                <div class="text-xs font-bold text-rose-950">E-Wallet</div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Card Details Form -->
+                <div class="bg-white/90 backdrop-blur-md p-6 sm:p-8 rounded-[2rem] shadow-sm border border-rose-100">
+                    <h3 class="trans-text font-black text-rose-950 text-sm mb-6" data-en="Card Details" data-ms="Butiran Kad" data-zh="卡详情" data-ja="カードの詳細">Card Details</h3>
+                    <form class="space-y-5" onsubmit="processPayment(event)">
+                        <div>
+                            <label class="block text-xs font-black text-rose-950 uppercase tracking-wider mb-2">Cardholder Name</label>
+                            <input type="text" required placeholder="John Doe" class="w-full bg-rose-50/50 border border-rose-100 px-4 py-3 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-rose-400">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-black text-rose-950 uppercase tracking-wider mb-2">Card Number</label>
+                            <input type="text" required placeholder="0000 0000 0000 0000" maxlength="19" class="w-full bg-rose-50/50 border border-rose-100 px-4 py-3 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-rose-400">
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-black text-rose-950 uppercase tracking-wider mb-2">Expiry Date</label>
+                                <input type="text" required placeholder="MM/YY" maxlength="5" class="w-full bg-rose-50/50 border border-rose-100 px-4 py-3 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-rose-400">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-black text-rose-950 uppercase tracking-wider mb-2">CVV</label>
+                                <input type="password" required placeholder="•••" maxlength="4" class="w-full bg-rose-50/50 border border-rose-100 px-4 py-3 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-rose-400">
+                            </div>
+                        </div>
+
+                        <!-- Pay Button inside form for validation -->
+                        <div class="pt-6 border-t border-rose-100">
+                            <button type="submit" class="w-full bg-rose-600 hover:bg-rose-700 text-white font-black py-4 rounded-2xl shadow-lg transition-all text-base cursor-pointer flex items-center justify-center gap-2">
+                                <span>🔒 Pay Now</span>
+                                <span id="payBtnTotal">RM 12.00</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- RIGHT: ORDER SUMMARY -->
+            <div class="md:col-span-1">
+                <div class="bg-white/90 backdrop-blur-md p-6 rounded-[2rem] shadow-sm border border-rose-100 sticky top-28">
+                    <h3 class="trans-text font-black text-rose-950 text-sm mb-4 border-b border-rose-100 pb-3" data-en="Order Summary" data-ms="Ringkasan Pesanan" data-zh="订单摘要" data-ja="注文概要">Order Summary</h3>
+                    
+                    <div id="checkoutItems" class="space-y-4 mb-6">
+                        <!-- Dynamic Item -->
+                        <div class="flex justify-between items-start gap-4 text-xs font-bold text-gray-700">
+                            <div>
+                                <span id="summaryName" class="text-rose-950 block mb-1 line-clamp-2">Loading...</span>
+                                <span class="text-gray-400">Qty: <span id="summaryQty">1</span></span>
+                            </div>
+                            <span id="summaryItemTotal" class="text-rose-600 shrink-0">RM 0.00</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 text-xs font-bold text-gray-500 border-t border-rose-100 pt-4">
+                        <div class="flex justify-between">
+                            <span>Subtotal</span>
+                            <span id="summarySubtotal">RM 0.00</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Shipping</span>
+                            <span>RM 0.00</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Taxes</span>
+                            <span>RM 0.00</span>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between items-center mt-6 pt-4 border-t-2 border-rose-200">
+                        <span class="text-sm font-black text-rose-950">Total</span>
+                        <span id="summaryGrandTotal" class="text-xl font-black text-rose-600">RM 0.00</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="trans-text text-rose-700/80 py-10 text-center text-xs font-bold mt-auto" data-en="Local Export+ Innovators | Export Smarter. Grow Globally" data-ms="Inovator Local Export+ | Eksport Lebih Bijak. Berkembang Secara Global" data-zh="Local Export+ 创新者 | 智能出口。全球成长" data-ja="Local Export+ イノベーター | より賢く輸出。グローバルに成長">
+        Local Export+ Innovators | Export Smarter. Grow Globally
+    </footer>
+
+    <!-- NEMO AI CHAT WIDGET -->
+    <div class="fixed bottom-8 right-8 z-50 flex flex-col items-end">
+        <div id="aiChatWindow" class="hidden mb-4 w-80 sm:w-96 bg-white rounded-[2.5rem] shadow-[0_20px_60px_rgb(225,29,72,0.12)] border-4 border-rose-100 overflow-hidden flex flex-col transform transition-all duration-300">
+            <div class="bg-gradient-to-r from-rose-600 to-pink-600 text-white p-5 flex justify-between items-center shadow-md">
+                <div class="font-black flex items-center gap-3">
+                    <span class="text-xs bg-white/25 px-2.5 py-1 rounded-lg font-bold">AI</span> 
+                    <div>
+                        <div class="text-base">Nemo AI Assistant</div>
+                        <div class="text-[10px] text-rose-100 font-extrabold flex items-center gap-1">
+                            <span class="w-2 h-2 rounded-full bg-rose-200 animate-ping"></span> Online & Secure
+                        </div>
+                    </div>
+                </div>
+                <button onclick="toggleChat()" class="text-white hover:text-rose-200 font-black text-2xl">&times;</button>
+            </div>
+            
+            <div id="chatMessages" class="p-5 bg-rose-50/40 h-72 overflow-y-auto flex flex-col gap-3 text-sm font-medium">
+                <div id="nemoGreeting" class="bg-white border border-rose-100 text-gray-700 p-4 rounded-2xl rounded-tl-sm self-start max-w-[85%] shadow-sm trans-text"
+                    data-en="Hello! I am Nemo. Don't worry, your payment details are fully encrypted and securely processed!"
+                    data-ms="Hello! Saya Nemo. Jangan bimbang, butiran pembayaran anda disulitkan sepenuhnya dan diproses dengan selamat!"
+                    data-zh="您好！我是Nemo。不用担心，您的付款详细信息已完全加密并安全处理！"
+                    data-ja="こんにちは！私はネモです。ご心配なく、支払い詳細は完全に暗号化され、安全に処理されます！">
+                    Hello! I am Nemo. Don't worry, your payment details are fully encrypted and securely processed!
+                </div>
+            </div>
+            
+            <div class="p-4 bg-white border-t border-rose-100 flex gap-2 items-center">
+                <input type="text" id="chatInput" placeholder="Type a message..." class="w-full bg-rose-50/60 px-4 py-3 rounded-full focus:outline-none focus:ring-2 focus:ring-rose-400 text-sm font-medium transition-all">
+                <button onclick="sendMessage()" class="bg-rose-600 text-white w-12 h-12 rounded-full font-black text-xs flex items-center justify-center hover:bg-rose-700 transition-all shadow-md shrink-0">Send</button>
+            </div>
+        </div>
+
+        <div class="relative group cursor-pointer" onclick="toggleChat()">
+            <div class="absolute right-24 top-1/2 -translate-y-1/2 bg-white text-rose-950 font-black text-xs px-4 py-2 rounded-2xl shadow-xl opacity-0 group-hover:opacity-100 transform translate-x-3 group-hover:translate-x-0 transition-all duration-300 pointer-events-none whitespace-nowrap border-2 border-rose-100">
+                Chat with Nemo
+            </div>
+            <button class="bg-gradient-to-br from-rose-600 via-pink-600 to-rose-700 text-white w-16 h-16 rounded-full shadow-[0_10px_30px_rgb(225,29,72,0.3)] flex items-center justify-center font-black text-xs transform hover:scale-110 hover:-translate-y-1 transition-all duration-300 border-4 border-white z-50">NEMO</button>
+            <span class="absolute top-0 right-0 flex h-5 w-5">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-5 w-5 bg-rose-500 border-2 border-white"></span>
+            </span>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script>
+        function toggleMoreMenu(event) {
+            event.stopPropagation();
+            const dropdown = document.getElementById('moreDropdown');
+            dropdown.classList.toggle('hidden');
+        }
+
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+        }
+
+        window.addEventListener('click', () => {
+            const dropdown = document.getElementById('moreDropdown');
+            if (dropdown && !dropdown.classList.contains('hidden')) {
+                dropdown.classList.add('hidden');
+            }
+        });
+
+        // LOAD CART DETAILS INTO PAYMENT PAGE
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedItem = JSON.parse(localStorage.getItem('cartItem'));
+            
+            if (savedItem) {
+                const total = savedItem.price * savedItem.quantity;
+                const formattedTotal = `RM ${total.toFixed(2)}`;
+
+                document.getElementById('summaryName').innerText = savedItem.name;
+                document.getElementById('summaryQty').innerText = savedItem.quantity;
+                document.getElementById('summaryItemTotal').innerText = formattedTotal;
+                
+                document.getElementById('summarySubtotal').innerText = formattedTotal;
+                document.getElementById('summaryGrandTotal').innerText = formattedTotal;
+                document.getElementById('payBtnTotal').innerText = formattedTotal;
+            } else {
+                document.getElementById('summaryName').innerText = "Bisrotti - Crunchy Bread with Rich Garlic Flavour";
+                document.getElementById('summaryItemTotal').innerText = "RM 12.00";
+                document.getElementById('summarySubtotal').innerText = "RM 12.00";
+                document.getElementById('summaryGrandTotal').innerText = "RM 12.00";
+                document.getElementById('payBtnTotal').innerText = "RM 12.00";
+            }
+        });
+
+        // HANDLE PAYMENT SUBMISSION
+        function processPayment(event) {
+            event.preventDefault();
+            
+            alert('🎉 Payment Successful! Your order has been placed and is being prepared for international shipping.');
+            
+            localStorage.removeItem('cartItem');
+            window.location.href = 'index.html';
+        }
+
+        // NEMO CHAT FUNCTIONS
+        function toggleChat() {
+            const chatWindow = document.getElementById('aiChatWindow');
+            chatWindow.classList.toggle('hidden');
+        }
+
+        function sendMessage() {
+            const inputField = document.getElementById('chatInput');
+            const messageText = inputField.value.trim();
+            if (messageText === "") return; 
+
+            const chatMessages = document.getElementById('chatMessages');
+            const userBubble = document.createElement('div');
+            userBubble.className = "bg-rose-600 text-white p-3.5 rounded-2xl rounded-tr-sm self-end max-w-[85%] shadow-sm mt-1 text-sm";
+            userBubble.innerText = messageText;
+            chatMessages.appendChild(userBubble);
+            inputField.value = "";
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            setTimeout(() => {
+                const aiBubble = document.createElement('div');
+                aiBubble.className = "bg-white border border-rose-100 text-gray-700 p-3.5 rounded-2xl rounded-tl-sm self-start max-w-[85%] shadow-sm mt-1 text-sm";
+                aiBubble.innerText = "If you have any questions about refunds or billing, I can help you with our secure payment policies!";
+                chatMessages.appendChild(aiBubble);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 800);
+        }
+
+        function changeGlobalLanguage() {
+            const lang = document.getElementById('globalLangSelect').value;
+            document.querySelectorAll('.trans-text').forEach(el => {
+                if(el.getAttribute(`data-${lang}`)) {
+                    el.innerHTML = el.getAttribute(`data-${lang}`);
+                }
+            });
+
+            const nemoG = document.getElementById('nemoGreeting');
+            if(nemoG && nemoG.getAttribute(`data-${lang}`)) {
+                nemoG.innerHTML = nemoG.getAttribute(`data-${lang}`);
+            }
+        }
+    </script>
+</body>
+</html>

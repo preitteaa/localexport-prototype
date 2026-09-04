@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buyer Sign Up | Local Export+</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-rose-50 via-pink-50 to-neutral-50 text-gray-800 font-sans scroll-smooth min-h-screen flex flex-col">
+
+    <!-- FLOATING MATTE HEADER -->
+    <div class="p-4">
+        <header class="bg-white/90 backdrop-blur-md text-rose-950 shadow-[0_8px_30px_rgb(225,29,72,0.04)] rounded-3xl md:rounded-full sticky top-4 z-50 transition-all border border-rose-100">
+            <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+                
+                <!-- BRAND, BACK BUTTON & MOBILE TOGGLE -->
+                <div class="w-full md:w-auto flex justify-between items-center">
+                    <div class="flex items-center gap-3">
+                        <button onclick="history.back()" class="bg-rose-100 hover:bg-rose-200 text-rose-900 px-3.5 py-1.5 rounded-full font-bold text-xs transition-all flex items-center gap-1 shadow-sm cursor-pointer">
+                            <span>←</span> Back
+                        </button>
+                        <a href="index.html" class="text-2xl font-black tracking-wide bg-gradient-to-r from-rose-700 to-pink-600 bg-clip-text text-transparent flex items-center gap-1">
+                            Local Export<span class="text-rose-500 text-3xl">+</span>
+                        </a>
+                    </div>
+                    <!-- Mobile Hamburger Button -->
+                    <button onclick="toggleMobileMenu()" class="md:hidden bg-rose-50 text-rose-800 p-2.5 rounded-xl border border-rose-100 font-bold text-lg">
+                        ☰
+                    </button>
+                </div>
+                
+                <!-- DESKTOP NAV BAR (Standardized Layout) -->
+                <nav class="space-x-2 hidden md:flex items-center font-bold text-sm">
+                    <a href="index.html" class="trans-text hover:text-rose-600 transition-all px-3 py-2" data-en="Home" data-ms="Laman Utama" data-zh="首页" data-ja="ホーム">Home</a>
+                    <a href="guidelines.html" class="trans-text hover:text-rose-600 transition-all px-3 py-2" data-en="Guidelines" data-ms="Garisan Panduan" data-zh="指南" data-ja="ガイドライン">Guidelines</a>
+                    <a href="buyer-profile.html" class="trans-text hover:text-rose-600 transition-all px-3 py-2" data-en="My Account" data-ms="Akaun Saya" data-zh="我的账户" data-ja="マイアカウント">My Account</a>
+                    
+                    <!-- CLICKABLE MORE PAGES DROPDOWN -->
+                    <div class="relative">
+                        <button onclick="toggleMoreMenu(event)" class="bg-rose-50 hover:bg-rose-100 text-rose-800 px-4 py-2 rounded-full shadow-sm flex items-center gap-1 transition-all border border-rose-100 font-bold text-sm cursor-pointer">
+                            More ▾
+                        </button>
+                        <div id="moreDropdown" class="absolute right-0 mt-2 w-52 bg-white border border-rose-100 rounded-2xl shadow-xl hidden flex-col p-2 z-50 gap-1">
+                            <a href="catalog.html" class="block px-4 py-2.5 text-xs font-bold text-gray-700 hover:bg-rose-50 hover:text-rose-900 rounded-xl transition-all">Catalog</a>
+                            <a href="checkout.html" class="block px-4 py-2.5 text-xs font-bold text-gray-700 hover:bg-rose-50 hover:text-rose-900 rounded-xl transition-all">My Cart</a>
+                            <a href="tracking.html" class="block px-4 py-2.5 text-xs font-bold text-gray-700 hover:bg-rose-50 hover:text-rose-900 rounded-xl transition-all">Track Order</a>
+                            <a href="about.html" class="block px-4 py-2.5 text-xs font-bold text-gray-700 hover:bg-rose-50 hover:text-rose-900 rounded-xl transition-all">About Us</a>
+                            <a href="register.html" class="block px-4 py-2.5 text-xs font-bold text-gray-700 hover:bg-rose-50 hover:text-rose-900 rounded-xl transition-all">Seller Register</a>
+                            <a href="buyer-register.html" class="block px-4 py-2.5 text-xs font-bold text-rose-800 bg-rose-50 rounded-xl transition-all">Buyer Sign Up</a>
+                        </div>
+                    </div>
+                    
+                    <!-- TRANSLATE WIDGET -->
+                    <div class="bg-white px-3 py-1.5 rounded-full flex items-center gap-2 text-xs border-2 border-rose-100 shadow-sm ml-2">
+                        <span>Language</span>
+                        <select id="globalLangSelect" onchange="changeGlobalLanguage()" class="bg-transparent text-rose-950 font-black focus:outline-none cursor-pointer">
+                            <option value="en">English</option>
+                            <option value="ms">Bahasa Melayu</option>
+                            <option value="zh">中文</option>
+                            <option value="ja">日本語</option>
+                        </select>
+                    </div>
+                </nav>
+
+                <!-- MOBILE DROPDOWN MENU PANEL (Standardized) -->
+                <div id="mobileMenu" class="w-full hidden md:hidden flex-col gap-2 pt-2 pb-2 border-t border-rose-100 font-bold text-sm text-left">
+                    <a href="index.html" class="px-4 py-2.5 text-gray-700 hover:bg-rose-50 rounded-xl">Home</a>
+                    <a href="guidelines.html" class="px-4 py-2.5 text-gray-700 hover:bg-rose-50 rounded-xl">Guidelines</a>
+                    <a href="buyer-profile.html" class="px-4 py-2.5 text-gray-700 hover:bg-rose-50 rounded-xl">My Account</a>
+                    <a href="catalog.html" class="px-4 py-2.5 text-gray-700 hover:bg-rose-50 rounded-xl">Catalog</a>
+                    <a href="checkout.html" class="px-4 py-2.5 text-gray-700 hover:bg-rose-50 rounded-xl">My Cart</a>
+                    <a href="tracking.html" class="px-4 py-2.5 text-gray-700 hover:bg-rose-50 rounded-xl">Track Order</a>
+                    <a href="about.html" class="px-4 py-2.5 text-gray-700 hover:bg-rose-50 rounded-xl">About Us</a>
+                    <a href="register.html" class="px-4 py-2.5 text-gray-700 hover:bg-rose-50 rounded-xl">Seller Register</a>
+                    <a href="buyer-register.html" class="px-4 py-2.5 bg-rose-50 text-rose-800 rounded-xl">Buyer Sign Up</a>
+                </div>
+
+            </div>
+        </header>
+    </div>
+
+    <!-- BUYER HERO SECTION -->
+    <section class="pt-12 pb-10 px-6 text-center flex flex-col justify-center items-center">
+        <div class="max-w-3xl mx-auto bg-gradient-to-r from-rose-600 via-pink-600 to-rose-700 p-10 md:p-14 rounded-[3.5rem] shadow-[0_20px_60px_rgb(225,29,72,0.15)] text-white relative overflow-hidden">
+            <span class="trans-text bg-white/15 text-rose-100 text-xs font-extrabold px-6 py-2.5 rounded-full uppercase tracking-widest backdrop-blur-md shadow-sm inline-block mb-4 border border-white/20"
+                data-en="Customer Account" data-ms="Akaun Pelanggan" data-zh="客户账户" data-ja="顧客アカウント">
+                Customer Account
+            </span>
+            <h1 class="trans-text text-3xl sm:text-4xl md:text-5xl font-black mb-4 tracking-tight"
+                data-en="Create Your Buyer Account" data-ms="Cipta Akaun Pembeli Anda" data-zh="创建您的买家账户" data-ja="購入者アカウントを作成する">
+                Create Your Buyer Account
+            </h1>
+            <p class="trans-text text-base sm:text-lg text-rose-100 font-medium max-w-lg mx-auto"
+                data-en="Sign up to purchase authentic Malaysian local products, track international orders, and save your global shipping addresses."
+                data-ms="Daftar untuk membeli produk tempatan Malaysia yang tulen, jejak pesanan antarabangsa, dan simpan alamat penghantaran global anda."
+                data-zh="注册购买正宗的马来西亚本地产品，追踪国际订单并保存您的全球收货地址。"
+                data-ja="本格的なマレーシアの地元の製品を購入し、国際注文を追跡し、グローバルな配送先住所を保存するためにサインアップしてください。">
+                Sign up to purchase authentic Malaysian local products, track international orders, and save your global shipping addresses.
+            </p>
+        </div>
+    </section>
+
+    <!-- BUYER SIGN UP FORM -->
+    <section class="py-8 px-6 max-w-2xl mx-auto w-full mb-16">
+        <div class="bg-white/90 backdrop-blur-md p-8 md:p-10 rounded-[2.5rem] shadow-sm border-2 border-rose-100">
+            <form id="buyerForm" onsubmit="handleBuyerRegister(event)" class="space-y-6">
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-xs font-black text-rose-950 uppercase tracking-wider mb-2">Full Name *</label>
+                        <input type="text" id="buyerName" required placeholder="e.g. Sarah Johnson" class="w-full bg-rose-50/50 border border-rose-100 px-4 py-3 rounded-2xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-rose-400">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-black text-rose-950 uppercase tracking-wider mb-2">Email Address *</label>
+                        <input type="email" id="buyerEmail" required placeholder="name@example.com" class="w-full bg-rose-50/50 border border-rose-100 px-4 py-3 rounded-2xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-rose-400">
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-xs font-black text-rose-950 uppercase tracking-wider mb-2">Password *</label>
+                        <input type="password" id="buyerPass" required placeholder="••••••••" class="w-full bg-rose-50/50 border border-rose-100 px-4 py-3 rounded-2xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-rose-400">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-black text-rose-950 uppercase tracking-wider mb-2">Destination Country *</label>
+                        <select id="buyerCountry" required class="w-full bg-rose-50/50 border border-rose-100 px-4 py-3 rounded-2xl text-sm font-medium focus:outline-none">
+                            <option value="United Kingdom">United Kingdom</option>
+                            <option value="United States">United States</option>
+                            <option value="Australia">Australia</option>
+                            <option value="Singapore">Singapore</option>
+                            <option value="Japan">Japan</option>
+                            <option value="Other">Other International Country</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-black text-rose-950 uppercase tracking-wider mb-2">International Shipping Address *</label>
+                    <textarea id="buyerAddress" rows="3" required placeholder="Street address, city, postal code..." class="w-full bg-rose-50/50 border border-rose-100 px-4 py-3 rounded-2xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-rose-400"></textarea>
+                </div>
+
+                <div class="flex items-center gap-3 pt-2">
+                    <input type="checkbox" id="buyerTerms" required class="w-5 h-5 rounded-lg border-rose-200 text-rose-600 focus:ring-rose-400">
+                    <label for="buyerTerms" class="text-xs font-bold text-gray-700">
+                        I agree to the <a href="guidelines.html" class="text-rose-600 underline">International Shipping Terms & Conditions</a>
+                    </label>
+                </div>
+
+                <button type="submit" class="w-full bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-700 hover:to-pink-700 text-white font-black py-4 rounded-2xl shadow-lg transition-all text-base cursor-pointer">
+                    Create Buyer Account 🛒
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="trans-text text-rose-700/80 py-10 text-center text-xs font-bold mt-auto" data-en="Local Export+ Innovators | Export Smarter. Grow Globally" data-ms="Inovator Local Export+ | Eksport Lebih Bijak. Berkembang Secara Global" data-zh="Local Export+ 创新者 | 智能出口。全球成长" data-ja="Local Export+ イノベーター | より賢く輸出。グローバルに成長">
+        Local Export+ Innovators | Export Smarter. Grow Globally
+    </footer>
+
+    <!-- NEMO AI CHAT WIDGET -->
+    <div class="fixed bottom-8 right-8 z-50 flex flex-col items-end">
+        <div id="aiChatWindow" class="hidden mb-4 w-80 sm:w-96 bg-white rounded-[2.5rem] shadow-[0_20px_60px_rgb(225,29,72,0.12)] border-4 border-rose-100 overflow-hidden flex flex-col transform transition-all duration-300">
+            <div class="bg-gradient-to-r from-rose-600 to-pink-600 text-white p-5 flex justify-between items-center shadow-md">
+                <div class="font-black flex items-center gap-3">
+                    <span class="text-xs bg-white/25 px-2.5 py-1 rounded-lg font-bold">AI</span> 
+                    <div>
+                        <div class="text-base">Nemo AI Assistant</div>
+                        <div class="text-[10px] text-rose-100 font-extrabold flex items-center gap-1">
+                            <span class="w-2 h-2 rounded-full bg-rose-200 animate-ping"></span> Online & Ready
+                        </div>
+                    </div>
+                </div>
+                <button onclick="toggleChat()" class="text-white hover:text-rose-200 font-black text-2xl">&times;</button>
+            </div>
+            
+            <div id="chatMessages" class="p-5 bg-rose-50/40 h-72 overflow-y-auto flex flex-col gap-3 text-sm font-medium">
+                <div id="nemoGreeting" class="bg-white border border-rose-100 text-gray-700 p-4 rounded-2xl rounded-tl-sm self-start max-w-[85%] shadow-sm trans-text"
+                    data-en="Hello! I am Nemo. Looking to sign up and shop for Malaysian goods? Let me know if you need help!"
+                    data-ms="Hello! Saya Nemo. Ingin mendaftar dan membeli barangan Malaysia? Beritahu saya jika anda perlukan bantuan!"
+                    data-zh="您好！我是Nemo。想注册购买马来西亚商品吗？如果您需要帮助，请告诉我！"
+                    data-ja="こんにちは！私はネモです。サインアップしてマレーシアの商品を購入したいですか？サポートが必要な場合はお知らせください！">
+                    Hello! I am Nemo. Looking to sign up and shop for Malaysian goods? Let me know if you need help!
+                </div>
+            </div>
+            
+            <div class="p-4 bg-white border-t border-rose-100 flex gap-2 items-center">
+                <input type="text" id="chatInput" placeholder="Type a message..." class="w-full bg-rose-50/60 px-4 py-3 rounded-full focus:outline-none focus:ring-2 focus:ring-rose-400 text-sm font-medium transition-all">
+                <button onclick="sendMessage()" class="bg-rose-600 text-white w-12 h-12 rounded-full font-black text-xs flex items-center justify-center hover:bg-rose-700 transition-all shadow-md shrink-0">Send</button>
+            </div>
+        </div>
+
+        <!-- FLOATING NEMO BUTTON -->
+        <div class="relative group cursor-pointer" onclick="toggleChat()">
+            <div class="absolute right-24 top-1/2 -translate-y-1/2 bg-white text-rose-950 font-black text-xs px-4 py-2 rounded-2xl shadow-xl opacity-0 group-hover:opacity-100 transform translate-x-3 group-hover:translate-x-0 transition-all duration-300 pointer-events-none whitespace-nowrap border-2 border-rose-100">
+                Chat with Nemo
+            </div>
+            <button class="bg-gradient-to-br from-rose-600 via-pink-600 to-rose-700 text-white w-16 h-16 rounded-full shadow-[0_10px_30px_rgb(225,29,72,0.3)] flex items-center justify-center font-black text-xs transform hover:scale-110 hover:-translate-y-1 transition-all duration-300 border-4 border-white z-50">NEMO</button>
+            <span class="absolute top-0 right-0 flex h-5 w-5">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-5 w-5 bg-rose-500 border-2 border-white"></span>
+            </span>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script>
+        function toggleMoreMenu(event) {
+            event.stopPropagation();
+            const dropdown = document.getElementById('moreDropdown');
+            dropdown.classList.toggle('hidden');
+        }
+
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+        }
+
+        window.addEventListener('click', () => {
+            const dropdown = document.getElementById('moreDropdown');
+            if (dropdown && !dropdown.classList.contains('hidden')) {
+                dropdown.classList.add('hidden');
+            }
+        });
+
+        function handleBuyerRegister(event) {
+            event.preventDefault();
+            const buyerData = {
+                name: document.getElementById('buyerName').value,
+                email: document.getElementById('buyerEmail').value,
+                country: document.getElementById('buyerCountry').value,
+                address: document.getElementById('buyerAddress').value
+            };
+
+            localStorage.setItem('buyerProfile', JSON.stringify(buyerData));
+            alert('Buyer account created successfully! Redirecting to catalog to shop...');
+            window.location.href = 'catalog.html';
+        }
+
+        function toggleChat() {
+            const chatWindow = document.getElementById('aiChatWindow');
+            chatWindow.classList.toggle('hidden');
+        }
+
+        function sendMessage() {
+            const inputField = document.getElementById('chatInput');
+            const messageText = inputField.value.trim();
+            if (messageText === "") return; 
+
+            const chatMessages = document.getElementById('chatMessages');
+            const userBubble = document.createElement('div');
+            userBubble.className = "bg-rose-600 text-white p-3.5 rounded-2xl rounded-tr-sm self-end max-w-[85%] shadow-sm mt-1 text-sm";
+            userBubble.innerText = messageText;
+            chatMessages.appendChild(userBubble);
+            inputField.value = "";
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            setTimeout(() => {
+                const aiBubble = document.createElement('div');
+                aiBubble.className = "bg-white border border-rose-100 text-gray-700 p-3.5 rounded-2xl rounded-tl-sm self-start max-w-[85%] shadow-sm mt-1 text-sm";
+                aiBubble.innerText = "Once you sign up, you'll be able to track your orders and manage your international shipping addresses in your profile!";
+                chatMessages.appendChild(aiBubble);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 800);
+        }
+
+        function changeGlobalLanguage() {
+            const lang = document.getElementById('globalLangSelect').value;
+            document.querySelectorAll('.trans-text').forEach(el => {
+                if(el.getAttribute(`data-${lang}`)) {
+                    el.innerHTML = el.getAttribute(`data-${lang}`);
+                }
+            });
+            const nemoG = document.getElementById('nemoGreeting');
+            if(nemoG && nemoG.getAttribute(`data-${lang}`)) {
+                nemoG.innerHTML = nemoG.getAttribute(`data-${lang}`);
+            }
+        }
+    </script>
+</body>
+</html>

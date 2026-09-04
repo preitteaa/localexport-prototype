@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Export+ | Global Export Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-rose-50 via-pink-50 to-neutral-50 text-gray-800 font-sans scroll-smooth min-h-screen flex flex-col">
+
+    <!-- FLOATING MATTE HEADER -->
+    <div class="p-4">
+        <header class="bg-white/90 backdrop-blur-md text-rose-950 shadow-[0_8px_30px_rgb(225,29,72,0.04)] rounded-3xl md:rounded-full sticky top-4 z-50 transition-all border border-rose-100">
+            <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+                
+                <!-- BRAND & MOBILE TOGGLE BUTTON -->
+                <div class="w-full md:w-auto flex justify-between items-center">
+                    <a href="index.html" class="text-2xl font-black tracking-wide bg-gradient-to-r from-rose-700 to-pink-600 bg-clip-text text-transparent flex items-center gap-1">
+                        Local Export<span class="text-rose-500 text-3xl">+</span>
+                    </a>
+                    <!-- Mobile Hamburger Button -->
+                    <button onclick="toggleMobileMenu()" class="md:hidden bg-rose-50 text-rose-800 p-2.5 rounded-xl border border-rose-100 font-bold text-lg">
+                        ☰
+                    </button>
+                </div>
+                
+                <!-- DESKTOP NAV BAR (Home, Guidelines, My Account, and More dropdown) -->
+                <nav class="space-x-2 hidden md:flex items-center font-bold text-sm">
+                    <a href="index.html" class="trans-text text-rose-800 bg-rose-100/80 px-4 py-2 rounded-full shadow-sm" data-en="Home" data-ms="Laman Utama" data-zh="首页" data-ja="ホーム">Home</a>
+                    <a href="guidelines.html" class="trans-text hover:text-rose-600 transition-all px-3 py-2" data-en="Guidelines" data-ms="Garisan Panduan" data-zh="指南" data-ja="ガイドライン">Guidelines</a>
+                    <a href="buyer-profile.html" class="trans-text hover:text-rose-600 transition-all px-3 py-2" data-en="My Account" data-ms="Akaun Saya" data-zh="我的账户" data-ja="マイアカウント">My Account</a>
+                    
+                    <!-- CLICKABLE MORE PAGES DROPDOWN (Contains everything else) -->
+                    <div class="relative">
+                        <button onclick="toggleMoreMenu(event)" class="bg-rose-50 hover:bg-rose-100 text-rose-800 px-4 py-2 rounded-full shadow-sm flex items-center gap-1 transition-all border border-rose-100 font-bold text-sm cursor-pointer">
+                            More ▾
+                        </button>
+                        <div id="moreDropdown" class="absolute right-0 mt-2 w-52 bg-white border border-rose-100 rounded-2xl shadow-xl hidden flex-col p-2 z-50 gap-1">
+                            <a href="catalog.html" class="block px-4 py-2.5 text-xs font-bold text-gray-700 hover:bg-rose-50 hover:text-rose-900 rounded-xl transition-all">Catalog</a>
+                            <a href="checkout.html" class="block px-4 py-2.5 text-xs font-bold text-gray-700 hover:bg-rose-50 hover:text-rose-900 rounded-xl transition-all">My Cart</a>
+                            <a href="tracking.html" class="block px-4 py-2.5 text-xs font-bold text-gray-700 hover:bg-rose-50 hover:text-rose-900 rounded-xl transition-all">Track Order</a>
+                            <a href="about.html" class="block px-4 py-2.5 text-xs font-bold text-gray-700 hover:bg-rose-50 hover:text-rose-900 rounded-xl transition-all">About Us</a>
+                            <a href="register.html" class="block px-4 py-2.5 text-xs font-bold text-gray-700 hover:bg-rose-50 hover:text-rose-900 rounded-xl transition-all">Seller Register</a>
+                            <a href="buyer-register.html" class="block px-4 py-2.5 text-xs font-bold text-gray-700 hover:bg-rose-50 hover:text-rose-900 rounded-xl transition-all">Buyer Sign Up</a>
+                        </div>
+                    </div>
+                    
+                    <!-- TRANSLATE WIDGET -->
+                    <div class="bg-white px-3 py-1.5 rounded-full flex items-center gap-2 text-xs border-2 border-rose-100 shadow-sm ml-2">
+                        <span>Language</span>
+                        <select id="globalLangSelect" onchange="changeGlobalLanguage()" class="bg-transparent text-rose-950 font-black focus:outline-none cursor-pointer">
+                            <option value="en">English</option>
+                            <option value="ms">Bahasa Melayu</option>
+                            <option value="zh">中文</option>
+                            <option value="ja">日本語</option>
+                        </select>
+                    </div>
+                </nav>
+
+                <!-- MOBILE DROPDOWN MENU PANEL -->
+                <div id="mobileMenu" class="w-full hidden md:hidden flex-col gap-2 pt-2 pb-2 border-t border-rose-100 font-bold text-sm text-left">
+                    <a href="index.html" class="px-4 py-2.5 bg-rose-50 text-rose-800 rounded-xl">Home</a>
+                    <a href="guidelines.html" class="px-4 py-2.5 text-gray-700 hover:bg-rose-50 rounded-xl">Guidelines</a>
+                    <a href="buyer-profile.html" class="px-4 py-2.5 text-gray-700 hover:bg-rose-50 rounded-xl">My Account</a>
+                    <a href="catalog.html" class="px-4 py-2.5 text-gray-700 hover:bg-rose-50 rounded-xl">Catalog</a>
+                    <a href="checkout.html" class="px-4 py-2.5 text-gray-700 hover:bg-rose-50 rounded-xl">My Cart</a>
+                    <a href="tracking.html" class="px-4 py-2.5 text-gray-700 hover:bg-rose-50 rounded-xl">Track Order</a>
+                    <a href="about.html" class="px-4 py-2.5 text-gray-700 hover:bg-rose-50 rounded-xl">About Us</a>
+                    <a href="register.html" class="px-4 py-2.5 text-gray-700 hover:bg-rose-50 rounded-xl">Seller Register</a>
+                    <a href="buyer-register.html" class="px-4 py-2.5 text-gray-700 hover:bg-rose-50 rounded-xl">Buyer Sign Up</a>
+                </div>
+
+            </div>
+        </header>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="pt-12 pb-16 px-6 text-center flex flex-col justify-center items-center">
+        <div class="max-w-5xl mx-auto bg-gradient-to-r from-rose-600 via-pink-600 to-rose-700 p-12 md:p-20 rounded-[3.5rem] shadow-[0_20px_60px_rgb(225,29,72,0.15)] text-white relative overflow-hidden transform hover:scale-[1.01] transition-all duration-500">
+            
+            <span class="trans-text bg-white/15 text-rose-100 text-xs font-extrabold px-6 py-2.5 rounded-full uppercase tracking-widest backdrop-blur-md shadow-sm inline-block mb-6 border border-white/20"
+                data-en="Malaysian Export Gateway"
+                data-ms="Gerbang Eksport Malaysia"
+                data-zh="马来西亚出口网关"
+                data-ja="マレーシア輸出ゲートウェイ">
+                Malaysian Export Gateway
+            </span>
+            
+            <h1 class="trans-text text-3xl sm:text-5xl md:text-6xl font-black mb-6 tracking-tight leading-tight"
+                data-en="Craving Authentic Malaysian Flavors? Discover Them Here. <br><span class='text-rose-200 drop-shadow-sm'>Together, We Take Local to the Global Stage.</span>"
+                data-ms="Mengidam Perisa Autentik Malaysia? Cari Di Sini. <br><span class='text-rose-200 drop-shadow-sm'>Bersama, Kita Bawa Produk Tempatan ke Pentas Global.</span>"
+                data-zh="渴望正宗的马来西亚风味？在这里发现它们。 <br><span class='text-rose-200 drop-shadow-sm'>携手将本土产品推向全球舞台。</span>"
+                data-ja="本格的なマレーシアの味をお探しですか？ここで見つけましょう。 <br><span class='text-rose-200 drop-shadow-sm'>共に、ローカルをグローバルステージへ。</span>">
+                Craving Authentic Malaysian Flavors? Discover Them Here. <br><span class="text-rose-200 drop-shadow-sm">Together, We Take Local to the Global Stage.</span>
+            </h1>
+            
+            <p class="trans-text text-lg sm:text-xl text-rose-100 mb-12 font-medium max-w-2xl mx-auto leading-relaxed"
+                data-en="Streamline international customs, automated pricing, and multi-language translations so your local products expand worldwide with ease."
+                data-ms="Mudah selaras kastam antarabangsa, penetapan harga automatik, dan terjemahan pelbagai bahasa untuk produk tempatan anda."
+                data-zh="简化国际海关、自动定价和多语言翻译，让您的本地产品轻松走向世界。"
+                data-ja="国際税関、自動価格設定、多言語翻訳を合理化し、ローカル製品を世界中へ簡単に展開します。">
+                Streamline international customs, automated pricing, and multi-language translations so your local products expand worldwide with ease.
+            </p>
+            
+            <!-- ACTION BUTTONS -->
+            <div class="flex flex-col sm:flex-row justify-center gap-5 relative z-10">
+                <a href="register.html" class="trans-text bg-white text-rose-900 font-black text-lg px-9 py-4 rounded-full shadow-lg hover:bg-rose-50 hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+                    data-en="Seller Register" data-ms="Pendaftaran Penjual" data-zh="卖家注册" data-ja="販売者登録">
+                    Seller Register
+                </a>
+                <a href="buyer-register.html" class="trans-text bg-pink-500 text-white font-black text-lg px-9 py-4 rounded-full shadow-lg hover:bg-pink-600 hover:-translate-y-1 transition-all duration-300 border-2 border-white/30 cursor-pointer"
+                    data-en="Buyer Sign Up" data-ms="Daftar Pembeli" data-zh="买家注册" data-ja="購入者サインアップ">
+                    Buyer Sign Up
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- REGIONAL MALAYSIA ORIGIN NETWORK WITH SHOP NOW BUTTONS -->
+    <section class="py-16 px-6 max-w-7xl mx-auto w-full space-y-12">
+        <div class="text-center">
+            <span class="trans-text text-xs font-black text-rose-600 uppercase tracking-widest bg-rose-100 px-4 py-1.5 rounded-full shadow-sm"
+                data-en="Nationwide Coverage" data-ms="Liputan Seluruh Negara" data-zh="全国覆盖" data-ja="全国的なカバー">Nationwide Coverage</span>
+            <h2 class="trans-text text-3xl md:text-4xl font-black text-rose-950 mt-3"
+                data-en="Explore Export Hubs by Region" data-ms="Terokai Hab Eksport Mengikut Wilayah" data-zh="按地区探索出口枢纽" data-ja="地域別輸出ハブの探索">
+                Explore Export Hubs by Region
+            </h2>
+            <p class="trans-text text-xs text-gray-500 font-medium mt-2"
+                data-en="Click 'Shop Now' on any state to view registered export products in the catalog."
+                data-ms="Klik 'Shop Now' pada mana-mana negeri untuk melihat produk eksport berdaftar dalam katalog."
+                data-zh="点击任意州的“立即购买”以查看目录中注册的出口产品。"
+                data-ja="任意の州の「今すぐ購入」をクリックして、カタログ内の登録済み輸出品を表示します。">
+                Click "Shop Now" on any state to view registered export products in the catalog.
+            </p>
+        </div>
+
+        <!-- REGION 1: CENTRAL REGION -->
+        <div class="bg-white/80 backdrop-blur-md p-8 rounded-[2.5rem] shadow-sm border-2 border-rose-100">
+            <h3 class="trans-text text-lg font-black text-rose-900 mb-4 border-b border-rose-100 pb-2 flex items-center gap-2"
+                data-en="Central Region" data-ms="Wilayah Tengah" data-zh="中部地区" data-ja="中部地域">
+                <span class="w-3 h-3 rounded-full bg-rose-500"></span> Central Region
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div class="bg-rose-50/50 p-5 rounded-2xl border border-rose-100 flex flex-col justify-between gap-4">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="font-black text-rose-950 text-sm block">Kuala Lumpur</span>
+                            <span class="trans-text text-[11px] text-gray-400" data-en="Federal Territory" data-ms="Wilayah Persekutuan" data-zh="联邦直辖区" data-ja="連邦直轄地">Federal Territory</span>
+                        </div>
+                        <span id="count-Kuala Lumpur" class="text-xs text-rose-600 font-extrabold bg-white px-3 py-1 rounded-xl shadow-xs">0 Active</span>
+                    </div>
+                    <a href="catalog.html" class="trans-text w-full text-center bg-rose-600 text-white font-bold text-xs py-2.5 rounded-xl hover:bg-rose-700 transition-all shadow-sm" data-en="Shop Now ➔" data-ms="Beli Sekarang ➔" data-zh="立即购买 ➔" data-ja="今すぐ購入 ➔">Shop Now ➔</a>
+                </div>
+                <div class="bg-rose-50/50 p-5 rounded-2xl border border-rose-100 flex flex-col justify-between gap-4">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="font-black text-rose-950 text-sm block">Selangor</span>
+                            <span class="trans-text text-[11px] text-gray-400" data-en="State" data-ms="Negeri" data-zh="州" data-ja="州">State</span>
+                        </div>
+                        <span id="count-Selangor" class="text-xs text-rose-600 font-extrabold bg-white px-3 py-1 rounded-xl shadow-xs">0 Active</span>
+                    </div>
+                    <a href="catalog.html" class="trans-text w-full text-center bg-rose-600 text-white font-bold text-xs py-2.5 rounded-xl hover:bg-rose-700 transition-all shadow-sm" data-en="Shop Now ➔" data-ms="Beli Sekarang ➔" data-zh="立即购买 ➔" data-ja="今すぐ購入 ➔">Shop Now ➔</a>
+                </div>
+                <div class="bg-rose-50/50 p-5 rounded-2xl border border-rose-100 flex flex-col justify-between gap-4">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="font-black text-rose-950 text-sm block">Putrajaya</span>
+                            <span class="trans-text text-[11px] text-gray-400" data-en="Federal Territory" data-ms="Wilayah Persekutuan" data-zh="联邦直辖区" data-ja="連邦直轄地">Federal Territory</span>
+                        </div>
+                        <span id="count-Putrajaya" class="text-xs text-rose-600 font-extrabold bg-white px-3 py-1 rounded-xl shadow-xs">0 Active</span>
+                    </div>
+                    <a href="catalog.html" class="trans-text w-full text-center bg-rose-600 text-white font-bold text-xs py-2.5 rounded-xl hover:bg-rose-700 transition-all shadow-sm" data-en="Shop Now ➔" data-ms="Beli Sekarang ➔" data-zh="立即购买 ➔" data-ja="今すぐ購入 ➔">Shop Now ➔</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- REGION 2: SOUTHERN REGION -->
+        <div class="bg-white/80 backdrop-blur-md p-8 rounded-[2.5rem] shadow-sm border-2 border-rose-100">
+            <h3 class="trans-text text-lg font-black text-rose-900 mb-4 border-b border-rose-100 pb-2 flex items-center gap-2"
+                data-en="Southern Region" data-ms="Wilayah Selatan" data-zh="南部地区" data-ja="南部地域">
+                <span class="w-3 h-3 rounded-full bg-pink-500"></span> Southern Region
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div class="bg-rose-50/50 p-5 rounded-2xl border border-rose-100 flex flex-col justify-between gap-4">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="font-black text-rose-950 text-sm block">Johor</span>
+                            <span class="trans-text text-[11px] text-gray-400" data-en="State" data-ms="Negeri" data-zh="州" data-ja="州">State</span>
+                        </div>
+                        <span id="count-Johor" class="text-xs text-rose-600 font-extrabold bg-white px-3 py-1 rounded-xl shadow-xs">0 Active</span>
+                    </div>
+                    <a href="catalog.html" class="trans-text w-full text-center bg-rose-600 text-white font-bold text-xs py-2.5 rounded-xl hover:bg-rose-700 transition-all shadow-sm" data-en="Shop Now ➔" data-ms="Beli Sekarang ➔" data-zh="立即购买 ➔" data-ja="今すぐ購入 ➔">Shop Now ➔</a>
+                </div>
+                <div class="bg-rose-50/50 p-5 rounded-2xl border border-rose-100 flex flex-col justify-between gap-4">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="font-black text-rose-950 text-sm block">Melaka</span>
+                            <span class="trans-text text-[11px] text-gray-400" data-en="State" data-ms="Negeri" data-zh="州" data-ja="州">State</span>
+                        </div>
+                        <span id="count-Melaka" class="text-xs text-rose-600 font-extrabold bg-white px-3 py-1 rounded-xl shadow-xs">0 Active</span>
+                    </div>
+                    <a href="catalog.html" class="trans-text w-full text-center bg-rose-600 text-white font-bold text-xs py-2.5 rounded-xl hover:bg-rose-700 transition-all shadow-sm" data-en="Shop Now ➔" data-ms="Beli Sekarang ➔" data-zh="立即购买 ➔" data-ja="今すぐ購入 ➔">Shop Now ➔</a>
+                </div>
+                <div class="bg-rose-50/50 p-5 rounded-2xl border border-rose-100 flex flex-col justify-between gap-4">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="font-black text-rose-950 text-sm block">Negeri Sembilan</span>
+                            <span class="trans-text text-[11px] text-gray-400" data-en="State" data-ms="Negeri" data-zh="州" data-ja="州">State</span>
+                        </div>
+                        <span id="count-Negeri Sembilan" class="text-xs text-rose-600 font-extrabold bg-white px-3 py-1 rounded-xl shadow-xs">0 Active</span>
+                    </div>
+                    <a href="catalog.html" class="trans-text w-full text-center bg-rose-600 text-white font-bold text-xs py-2.5 rounded-xl hover:bg-rose-700 transition-all shadow-sm" data-en="Shop Now ➔" data-ms="Beli Sekarang ➔" data-zh="立即购买 ➔" data-ja="今すぐ購入 ➔">Shop Now ➔</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- REGION 3: NORTHERN REGION -->
+        <div class="bg-white/80 backdrop-blur-md p-8 rounded-[2.5rem] shadow-sm border-2 border-rose-100">
+            <h3 class="trans-text text-lg font-black text-rose-900 mb-4 border-b border-rose-100 pb-2 flex items-center gap-2"
+                data-en="Northern Region" data-ms="Wilayah Utara" data-zh="北部地区" data-ja="北部地域">
+                <span class="w-3 h-3 rounded-full bg-rose-400"></span> Northern Region
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="bg-rose-50/50 p-5 rounded-2xl border border-rose-100 flex flex-col justify-between gap-4">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="font-black text-rose-950 text-sm block">Penang</span>
+                            <span class="trans-text text-[11px] text-gray-400" data-en="State" data-ms="Negeri" data-zh="州" data-ja="州">State</span>
+                        </div>
+                        <span id="count-Penang" class="text-xs text-rose-600 font-extrabold bg-white px-3 py-1 rounded-xl shadow-xs">0 Active</span>
+                    </div>
+                    <a href="catalog.html" class="trans-text w-full text-center bg-rose-600 text-white font-bold text-xs py-2.5 rounded-xl hover:bg-rose-700 transition-all shadow-sm" data-en="Shop Now ➔" data-ms="Beli Sekarang ➔" data-zh="立即购买 ➔" data-ja="今すぐ購入 ➔">Shop Now ➔</a>
+                </div>
+                <div class="bg-rose-50/50 p-5 rounded-2xl border border-rose-100 flex flex-col justify-between gap-4">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="font-black text-rose-950 text-sm block">Perak</span>
+                            <span class="trans-text text-[11px] text-gray-400" data-en="State" data-ms="Negeri" data-zh="州" data-ja="州">State</span>
+                        </div>
+                        <span id="count-Perak" class="text-xs text-rose-600 font-extrabold bg-white px-3 py-1 rounded-xl shadow-xs">0 Active</span>
+                    </div>
+                    <a href="catalog.html" class="trans-text w-full text-center bg-rose-600 text-white font-bold text-xs py-2.5 rounded-xl hover:bg-rose-700 transition-all shadow-sm" data-en="Shop Now ➔" data-ms="Beli Sekarang ➔" data-zh="立即购买 ➔" data-ja="今すぐ購入 ➔">Shop Now ➔</a>
+                </div>
+                <div class="bg-rose-50/50 p-5 rounded-2xl border border-rose-100 flex flex-col justify-between gap-4">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="font-black text-rose-950 text-sm block">Kedah</span>
+                            <span class="trans-text text-[11px] text-gray-400" data-en="State" data-ms="Negeri" data-zh="州" data-ja="州">State</span>
+                        </div>
+                        <span id="count-Kedah" class="text-xs text-rose-600 font-extrabold bg-white px-3 py-1 rounded-xl shadow-xs">0 Active</span>
+                    </div>
+                    <a href="catalog.html" class="trans-text w-full text-center bg-rose-600 text-white font-bold text-xs py-2.5 rounded-xl hover:bg-rose-700 transition-all shadow-sm" data-en="Shop Now ➔" data-ms="Beli Sekarang ➔" data-zh="立即购买 ➔" data-ja="今すぐ購入 ➔">Shop Now ➔</a>
+                </div>
+                <div class="bg-rose-50/50 p-5 rounded-2xl border border-rose-100 flex flex-col justify-between gap-4">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="font-black text-rose-950 text-sm block">Perlis</span>
+                            <span class="trans-text text-[11px] text-gray-400" data-en="State" data-ms="Negeri" data-zh="州" data-ja="州">State</span>
+                        </div>
+                        <span id="count-Perlis" class="text-xs text-rose-600 font-extrabold bg-white px-3 py-1 rounded-xl shadow-xs">0 Active</span>
+                    </div>
+                    <a href="catalog.html" class="trans-text w-full text-center bg-rose-600 text-white font-bold text-xs py-2.5 rounded-xl hover:bg-rose-700 transition-all shadow-sm" data-en="Shop Now ➔" data-ms="Beli Sekarang ➔" data-zh="立即购买 ➔" data-ja="今すぐ購入 ➔">Shop Now ➔</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- REGION 4: EAST COAST REGION -->
+        <div class="bg-white/80 backdrop-blur-md p-8 rounded-[2.5rem] shadow-sm border-2 border-rose-100">
+            <h3 class="trans-text text-lg font-black text-rose-900 mb-4 border-b border-rose-100 pb-2 flex items-center gap-2"
+                data-en="East Coast Region" data-ms="Wilayah Pantai Timur" data-zh="东海岸地区" data-ja="東海岸地域">
+                <span class="w-3 h-3 rounded-full bg-rose-700"></span> East Coast Region
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div class="bg-rose-50/50 p-5 rounded-2xl border border-rose-100 flex flex-col justify-between gap-4">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="font-black text-rose-950 text-sm block">Pahang</span>
+                            <span class="trans-text text-[11px] text-gray-400" data-en="State" data-ms="Negeri" data-zh="州" data-ja="州">State</span>
+                        </div>
+                        <span id="count-Pahang" class="text-xs text-rose-600 font-extrabold bg-white px-3 py-1 rounded-xl shadow-xs">0 Active</span>
+                    </div>
+                    <a href="catalog.html" class="trans-text w-full text-center bg-rose-600 text-white font-bold text-xs py-2.5 rounded-xl hover:bg-rose-700 transition-all shadow-sm" data-en="Shop Now ➔" data-ms="Beli Sekarang ➔" data-zh="立即购买 ➔" data-ja="今すぐ購入 ➔">Shop Now ➔</a>
+                </div>
+                <div class="bg-rose-50/50 p-5 rounded-2xl border border-rose-100 flex flex-col justify-between gap-4">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="font-black text-rose-950 text-sm block">Terengganu</span>
+                            <span class="trans-text text-[11px] text-gray-400" data-en="State" data-ms="Negeri" data-zh="州" data-ja="州">State</span>
+                        </div>
+                        <span id="count-Terengganu" class="text-xs text-rose-600 font-extrabold bg-white px-3 py-1 rounded-xl shadow-xs">0 Active</span>
+                    </div>
+                    <a href="catalog.html" class="trans-text w-full text-center bg-rose-600 text-white font-bold text-xs py-2.5 rounded-xl hover:bg-rose-700 transition-all shadow-sm" data-en="Shop Now ➔" data-ms="Beli Sekarang ➔" data-zh="立即购买 ➔" data-ja="今すぐ購入 ➔">Shop Now ➔</a>
+                </div>
+                <div class="bg-rose-50/50 p-5 rounded-2xl border border-rose-100 flex flex-col justify-between gap-4">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="font-black text-rose-950 text-sm block">Kelantan</span>
+                            <span class="trans-text text-[11px] text-gray-400" data-en="State" data-ms="Negeri" data-zh="州" data-ja="州">State</span>
+                        </div>
+                        <span id="count-Kelantan" class="text-xs text-rose-600 font-extrabold bg-white px-3 py-1 rounded-xl shadow-xs">0 Active</span>
+                    </div>
+                    <a href="catalog.html" class="trans-text w-full text-center bg-rose-600 text-white font-bold text-xs py-2.5 rounded-xl hover:bg-rose-700 transition-all shadow-sm" data-en="Shop Now ➔" data-ms="Beli Sekarang ➔" data-zh="立即购买 ➔" data-ja="今すぐ購入 ➔">Shop Now ➔</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- REGION 5: EAST MALAYSIA / BORNEO -->
+        <div class="bg-white/80 backdrop-blur-md p-8 rounded-[2.5rem] shadow-sm border-2 border-rose-100">
+            <h3 class="trans-text text-lg font-black text-rose-900 mb-4 border-b border-rose-100 pb-2 flex items-center gap-2"
+                data-en="East Malaysia (Borneo)" data-ms="Malaysia Timur (Borneo)" data-zh="东马（婆罗洲）" data-ja="東マレーシア（ボルネオ）">
+                <span class="w-3 h-3 rounded-full bg-pink-700"></span> East Malaysia (Borneo)
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div class="bg-rose-50/50 p-5 rounded-2xl border border-rose-100 flex flex-col justify-between gap-4">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="font-black text-rose-950 text-sm block">Sabah</span>
+                            <span class="trans-text text-[11px] text-gray-400" data-en="State" data-ms="Negeri" data-zh="州" data-ja="州">State</span>
+                        </div>
+                        <span id="count-Sabah" class="text-xs text-rose-600 font-extrabold bg-white px-3 py-1 rounded-xl shadow-xs">0 Active</span>
+                    </div>
+                    <a href="catalog.html" class="trans-text w-full text-center bg-rose-600 text-white font-bold text-xs py-2.5 rounded-xl hover:bg-rose-700 transition-all shadow-sm" data-en="Shop Now ➔" data-ms="Beli Sekarang ➔" data-zh="立即购买 ➔" data-ja="今すぐ購入 ➔">Shop Now ➔</a>
+                </div>
+                <div class="bg-rose-50/50 p-5 rounded-2xl border border-rose-100 flex flex-col justify-between gap-4">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="font-black text-rose-950 text-sm block">Sarawak</span>
+                            <span class="trans-text text-[11px] text-gray-400" data-en="State" data-ms="Negeri" data-zh="州" data-ja="州">State</span>
+                        </div>
+                        <span id="count-Sarawak" class="text-xs text-rose-600 font-extrabold bg-white px-3 py-1 rounded-xl shadow-xs">0 Active</span>
+                    </div>
+                    <a href="catalog.html" class="trans-text w-full text-center bg-rose-600 text-white font-bold text-xs py-2.5 rounded-xl hover:bg-rose-700 transition-all shadow-sm" data-en="Shop Now ➔" data-ms="Beli Sekarang ➔" data-zh="立即购买 ➔" data-ja="今すぐ購入 ➔">Shop Now ➔</a>
+                </div>
+                <div class="bg-rose-50/50 p-5 rounded-2xl border border-rose-100 flex flex-col justify-between gap-4">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="font-black text-rose-950 text-sm block">Labuan</span>
+                            <span class="trans-text text-[11px] text-gray-400" data-en="Federal Territory" data-ms="Wilayah Persekutuan" data-zh="联邦直辖区" data-ja="連邦直轄地">Federal Territory</span>
+                        </div>
+                        <span id="count-Labuan" class="text-xs text-rose-600 font-extrabold bg-white px-3 py-1 rounded-xl shadow-xs">0 Active</span>
+                    </div>
+                    <a href="catalog.html" class="trans-text w-full text-center bg-rose-600 text-white font-bold text-xs py-2.5 rounded-xl hover:bg-rose-700 transition-all shadow-sm" data-en="Shop Now ➔" data-ms="Beli Sekarang ➔" data-zh="立即购买 ➔" data-ja="今すぐ購入 ➔">Shop Now ➔</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURE CARDS -->
+    <section class="py-12 px-6 max-w-7xl mx-auto w-full">
+        <div class="text-center mb-12">
+            <span class="trans-text bg-rose-100 text-rose-800 text-xs font-black px-4 py-1.5 rounded-full uppercase tracking-widest"
+                data-en="Core Capabilities" data-ms="Keupayaan Teras" data-zh="核心功能" data-ja="コア機能">Core Capabilities</span>
+            <h2 class="trans-text text-3xl md:text-4xl font-black text-rose-950 mt-3"
+                data-en="Designed for Modern Exporters" data-ms="Direka Untuk Pengeksport Moden" data-zh="专为现代出口商设计" data-ja="現代のエクスポーター向けに設計">
+                Designed for Modern Exporters
+            </h2>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white/90 backdrop-blur-sm p-8 rounded-[2.5rem] shadow-[0_10px_30px_rgb(225,29,72,0.03)] border-2 border-rose-50 hover:border-rose-300 transform hover:-translate-y-3 transition-all duration-300 text-center group">
+                <div class="bg-gradient-to-br from-rose-500 to-pink-600 text-white w-16 h-16 rounded-2xl flex items-center justify-center text-lg font-bold mx-auto mb-6 shadow-md group-hover:rotate-6 transition-transform">AI</div>
+                <h3 class="trans-text text-xl font-black text-rose-950 mb-3" data-en="AI Customs Checker" data-ms="Pemeriksa Kastam AI" data-zh="AI海关检查员" data-ja="AI税関チェッカー">AI Customs Checker</h3>
+                <p class="trans-text text-gray-600 text-sm font-medium leading-relaxed" data-en="Upload certificates and let our intelligent engine verify trade compliance instantly." data-ms="Muat naik sijil dan biarkan enjin pintar kami mengesahkan pematuhan perdagangan serta-merta." data-zh="上传证书，让我们的智能引擎即时验证贸易合规性。" data-ja="証明書をアップロードし、インテリジェントエンジンに貿易コンプライアンスを即座に確認させます。">
+                    Upload certificates and let our intelligent engine verify trade compliance instantly.
+                </p>
+            </div>
+            <div class="bg-white/90 backdrop-blur-sm p-8 rounded-[2.5rem] shadow-[0_10px_30px_rgb(225,29,72,0.03)] border-2 border-rose-50 hover:border-rose-300 transform hover:-translate-y-3 transition-all duration-300 text-center group">
+                <div class="bg-gradient-to-br from-pink-500 to-rose-600 text-white w-16 h-16 rounded-2xl flex items-center justify-center text-lg font-bold mx-auto mb-6 shadow-md group-hover:rotate-6 transition-transform">$</div>
+                <h3 class="trans-text text-xl font-black text-rose-950 mb-3" data-en="Smart USD Pricing" data-ms="Harga USD Pintar" data-zh="智能美元定价" data-ja="スマートUSD価格設定">Smart USD Pricing</h3>
+                <p class="trans-text text-gray-600 text-sm font-medium leading-relaxed" data-en="Automate currency conversion and calculate optimal international pricing structures." data-ms="Automatikkan pertukaran mata wang dan kira struktur harga antarabangsa yang optimum." data-zh="自动转换货币并计算最佳国际定价结构。" data-ja="通貨換算を自動化し、最適な国際価格体系を計算します。">
+                    Automate currency conversion and calculate optimal international pricing structures.
+                </p>
+            </div>
+            <div class="bg-white/90 backdrop-blur-sm p-8 rounded-[2.5rem] shadow-[0_10px_30px_rgb(225,29,72,0.03)] border-2 border-rose-50 hover:border-rose-300 transform hover:-translate-y-3 transition-all duration-300 text-center group">
+                <div class="bg-gradient-to-br from-rose-600 to-pink-700 text-white w-16 h-16 rounded-2xl flex items-center justify-center text-xs font-bold mx-auto mb-6 shadow-md group-hover:rotate-6 transition-transform">LANG</div>
+                <h3 class="trans-text text-xl font-black text-rose-950 mb-3" data-en="Instant Translation" data-ms="Terjemahan Segera" data-zh="即时翻译" data-ja="インスタント翻訳">Instant Translation</h3>
+                <p class="trans-text text-gray-600 text-sm font-medium leading-relaxed" data-en="Seamlessly translate store listings into multiple global languages in real time." data-ms="Terjemahkan senarai kedai dengan lancar ke dalam pelbagai bahasa global dalam masa nyata." data-zh="实时无缝地将店铺列表翻译成多种全球语言。" data-ja="ストアのリストをリアルタイムで複数のグローバル言語にシームレスに翻訳します。">
+                    Seamlessly translate store listings into multiple global languages in real time.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="trans-text text-rose-700/80 py-10 text-center text-xs font-bold mt-auto" data-en="Local Export+ Innovators | Export Smarter. Grow Globally" data-ms="Inovator Local Export+ | Eksport Lebih Bijak. Berkembang Secara Global" data-zh="Local Export+ 创新者 | 智能出口。全球成长" data-ja="Local Export+ イノベーター | より賢く輸出。グローバルに成長">
+        Local Export+ Innovators | Export Smarter. Grow Globally
+    </footer>
+
+    <!-- NEMO AI CHAT WIDGET -->
+    <div class="fixed bottom-8 right-8 z-50 flex flex-col items-end">
+        <div id="aiChatWindow" class="hidden mb-4 w-80 sm:w-96 bg-white rounded-[2.5rem] shadow-[0_20px_60px_rgb(225,29,72,0.12)] border-4 border-rose-100 overflow-hidden flex flex-col transform transition-all duration-300">
+            <div class="bg-gradient-to-r from-rose-600 to-pink-600 text-white p-5 flex justify-between items-center shadow-md">
+                <div class="font-black flex items-center gap-3">
+                    <span class="text-xs bg-white/25 px-2.5 py-1 rounded-lg font-bold">AI</span> 
+                    <div>
+                        <div class="text-base">Nemo AI Assistant</div>
+                        <div class="text-[10px] text-rose-100 font-extrabold flex items-center gap-1">
+                            <span class="w-2 h-2 rounded-full bg-rose-200 animate-ping"></span> Online & Ready
+                        </div>
+                    </div>
+                </div>
+                <button onclick="toggleChat()" class="text-white hover:text-rose-200 font-black text-2xl">&times;</button>
+            </div>
+            
+            <div id="chatMessages" class="p-5 bg-rose-50/40 h-72 overflow-y-auto flex flex-col gap-3 text-sm font-medium">
+                <div id="nemoGreeting" class="bg-white border border-rose-100 text-gray-700 p-4 rounded-2xl rounded-tl-sm self-start max-w-[85%] shadow-sm trans-text"
+                    data-en="Hello! I am <b>Nemo</b>, your 24/7 export guide. Ready to take Malaysian products to the global stage?"
+                    data-ms="Hello! Saya Nemo, panduan eksport 24/7 anda. Bersedia untuk bawa produk Malaysia ke pentas global?"
+                    data-zh="您好！我是Nemo，您的全天候出口向导。准备好将马来西亚产品推向全球舞台了吗？"
+                    data-ja="こんにちは！私はネモ、24時間365日の輸出ガイドです。マレーシアの製品をグローバルステージに展開する準備はできていますか？">
+                    Hello! I am <b>Nemo</b>, your 24/7 export guide. Ready to take Malaysian products to the global stage?
+                </div>
+            </div>
+            
+            <div class="p-4 bg-white border-t border-rose-100 flex gap-2 items-center">
+                <input type="text" id="chatInput" placeholder="Type a message..." class="w-full bg-rose-50/60 px-4 py-3 rounded-full focus:outline-none focus:ring-2 focus:ring-rose-400 text-sm font-medium transition-all">
+                <button onclick="sendMessage()" class="bg-rose-600 text-white w-12 h-12 rounded-full font-black text-xs flex items-center justify-center hover:bg-rose-700 transition-all shadow-md shrink-0">Send</button>
+            </div>
+        </div>
+
+        <!-- FLOATING NEMO BUTTON -->
+        <div class="relative group cursor-pointer" onclick="toggleChat()">
+            <div class="absolute right-24 top-1/2 -translate-y-1/2 bg-white text-rose-950 font-black text-xs px-4 py-2 rounded-2xl shadow-xl opacity-0 group-hover:opacity-100 transform translate-x-3 group-hover:translate-x-0 transition-all duration-300 pointer-events-none whitespace-nowrap border-2 border-rose-100">
+                Chat with Nemo
+            </div>
+            <button class="bg-gradient-to-br from-rose-600 via-pink-600 to-rose-700 text-white w-16 h-16 rounded-full shadow-[0_10px_30px_rgb(225,29,72,0.3)] flex items-center justify-center font-black text-xs transform hover:scale-110 hover:-translate-y-1 transition-all duration-300 border-4 border-white z-50">NEMO</button>
+            <span class="absolute top-0 right-0 flex h-5 w-5">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-5 w-5 bg-rose-500 border-2 border-white"></span>
+            </span>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script>
+        function toggleMoreMenu(event) {
+            event.stopPropagation();
+            const dropdown = document.getElementById('moreDropdown');
+            dropdown.classList.toggle('hidden');
+        }
+
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+        }
+
+        window.addEventListener('click', () => {
+            const dropdown = document.getElementById('moreDropdown');
+            if (dropdown && !dropdown.classList.contains('hidden')) {
+                dropdown.classList.add('hidden');
+            }
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const catalog = JSON.parse(localStorage.getItem('productCatalog')) || [];
+            
+            const states = [
+                'Kuala Lumpur', 'Selangor', 'Putrajaya',
+                'Johor', 'Melaka', 'Negeri Sembilan',
+                'Penang', 'Perak', 'Kedah', 'Perlis',
+                'Pahang', 'Terengganu', 'Kelantan',
+                'Sabah', 'Sarawak', 'Labuan'
+            ];
+
+            const stateCounts = {};
+            states.forEach(s => stateCounts[s] = 0);
+
+            catalog.forEach(product => {
+                let loc = product.location ? product.location.trim() : '';
+                states.forEach(s => {
+                    if(loc.toLowerCase().includes(s.toLowerCase())) {
+                        stateCounts[s]++;
+                    }
+                });
+            });
+
+            states.forEach(s => {
+                const el = document.getElementById(`count-${s}`);
+                if(el) {
+                    el.innerText = `${stateCounts[s]} Active`;
+                }
+            });
+        });
+
+        function toggleChat() {
+            const chatWindow = document.getElementById('aiChatWindow');
+            chatWindow.classList.toggle('hidden');
+        }
+
+        function sendMessage() {
+            const inputField = document.getElementById('chatInput');
+            const messageText = inputField.value.trim();
+            if (messageText === "") return; 
+
+            const chatMessages = document.getElementById('chatMessages');
+            const userBubble = document.createElement('div');
+            userBubble.className = "bg-rose-600 text-white p-3.5 rounded-2xl rounded-tr-sm self-end max-w-[85%] shadow-sm mt-1 text-sm";
+            userBubble.innerText = messageText;
+            chatMessages.appendChild(userBubble);
+            inputField.value = "";
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            setTimeout(() => {
+                const aiBubble = document.createElement('div');
+                aiBubble.className = "bg-white border border-rose-100 text-gray-700 p-3.5 rounded-2xl rounded-tl-sm self-start max-w-[85%] shadow-sm mt-1 text-sm";
+                aiBubble.innerText = "Analyzing global trade compliance pathways for your Malaysian products. Everything looks optimal!";
+                chatMessages.appendChild(aiBubble);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 800);
+        }
+
+        function changeGlobalLanguage() {
+            const lang = document.getElementById('globalLangSelect').value;
+            document.querySelectorAll('.trans-text').forEach(el => {
+                if(el.getAttribute(`data-${lang}`)) {
+                    el.innerHTML = el.getAttribute(`data-${lang}`);
+                }
+            });
+
+            const nemoG = document.getElementById('nemoGreeting');
+            if(nemoG && nemoG.getAttribute(`data-${lang}`)) {
+                nemoG.innerHTML = nemoG.getAttribute(`data-${lang}`);
+            }
+        }
+    </script>
+</body>
+</html>

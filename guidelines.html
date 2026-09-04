@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guidelines & Shipping Terms | Local Export+</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-rose-50 via-pink-50 to-neutral-50 text-gray-800 font-sans scroll-smooth min-h-screen flex flex-col">
+
+    <!-- FLOATING MATTE HEADER -->
+    <div class="p-4">
+        <header class="bg-white/90 backdrop-blur-md text-rose-950 shadow-[0_8px_30px_rgb(225,29,72,0.04)] rounded-3xl md:rounded-full sticky top-4 z-50 transition-all border border-rose-100">
+            <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+                
+                <!-- BRAND, BACK BUTTON & MOBILE TOGGLE -->
+                <div class="w-full md:w-auto flex justify-between items-center">
+                    <div class="flex items-center gap-3">
+                        <button onclick="history.back()" class="bg-rose-100 hover:bg-rose-200 text-rose-900 px-3.5 py-1.5 rounded-full font-bold text-xs transition-all flex items-center gap-1 shadow-sm cursor-pointer">
+                            <span>←</span> <span class="trans-text" data-en="Back" data-ms="Kembali" data-zh="返回" data-ja="戻る">Back</span>
+                        </button>
+                        <a href="index.html" class="text-2xl font-black tracking-wide bg-gradient-to-r from-rose-700 to-pink-600 bg-clip-text text-transparent flex items-center gap-1">
+                            Local Export<span class="text-rose-500 text-3xl">+</span>
+                        </a>
+                    </div>
+                    <!-- Mobile Hamburger Button -->
+                    <button onclick="toggleMobileMenu()" class="md:hidden bg-rose-50 text-rose-800 p-2.5 rounded-xl border border-rose-100 font-bold text-lg">
+                        ☰
+                    </button>
+                </div>
+                
+                <!-- DESKTOP NAV BAR (Exact Homepage Match) -->
+                <nav class="space-x-2 hidden md:flex items-center font-bold text-sm">
+                    <a href="index.html" class="trans-text hover:text-rose-600 transition-all px-4 py-2 rounded-full" data-en="Home" data-ms="Laman Utama" data-zh="首页" data-ja="ホーム">Home</a>
+                    <a href="guidelines.html" class="trans-text text-rose-800 bg-rose-100/80 px-4 py-2 rounded-full shadow-sm" data-en="Guidelines" data-ms="Garisan Panduan" data-zh="指南" data-ja="ガイドライン">Guidelines</a>
+                    <a href="buyer-profile.html" class="trans-text hover:text-rose-600 transition-all px-4 py-2 rounded-full" data-en="My Account" data-ms="Akaun Saya" data-zh="我的账户" data-ja="マイアカウント">My Account</a>
+                    
+                    <!-- CLICKABLE MORE PAGES DROPDOWN -->
+                    <div class="relative">
+                        <button onclick="toggleMoreMenu(event)" class="bg-white hover:bg-rose-50 text-rose-950 px-5 py-2.5 rounded-full shadow-sm flex items-center gap-1.5 transition-all border-2 border-rose-200 font-black text-sm cursor-pointer">
+                            <span class="trans-text" data-en="More ▾" data-ms="Lagi ▾" data-zh="更多 ▾" data-ja="もっと ▾">More ▾</span>
+                        </button>
+                        <div id="moreDropdown" class="absolute right-0 mt-2 w-52 bg-white border border-rose-100 rounded-2xl shadow-xl hidden flex-col p-2 z-50 gap-1">
+                            <a href="catalog.html" class="trans-text block px-4 py-2.5 text-xs font-bold text-gray-700 hover:bg-rose-50 hover:text-rose-900 rounded-xl transition-all" data-en="Catalog" data-ms="Katalog" data-zh="目录" data-ja="カタログ">Catalog</a>
+                            <a href="checkout.html" class="trans-text block px-4 py-2.5 text-xs font-bold text-gray-700 hover:bg-rose-50 hover:text-rose-900 rounded-xl transition-all" data-en="My Cart" data-ms="Troli Saya" data-zh="购物车" data-ja="マイカート">My Cart</a>
+                            <a href="tracking.html" class="trans-text block px-4 py-2.5 text-xs font-bold text-gray-700 hover:bg-rose-50 hover:text-rose-900 rounded-xl transition-all" data-en="Track Order" data-ms="Jejak Pesanan" data-zh="订单跟踪" data-ja="注文追跡">Track Order</a>
+                            <a href="about.html" class="trans-text block px-4 py-2.5 text-xs font-bold text-gray-700 hover:bg-rose-50 hover:text-rose-900 rounded-xl transition-all" data-en="About Us" data-ms="Tentang Kami" data-zh="关于我们" data-ja="私たちについて">About Us</a>
+                            <a href="register.html" class="trans-text block px-4 py-2.5 text-xs font-bold text-gray-700 hover:bg-rose-50 hover:text-rose-900 rounded-xl transition-all" data-en="Seller Register" data-ms="Pendaftaran Penjual" data-zh="卖家注册" data-ja="セラー登録">Seller Register</a>
+                            <a href="buyer-register.html" class="trans-text block px-4 py-2.5 text-xs font-bold text-gray-700 hover:bg-rose-50 hover:text-rose-900 rounded-xl transition-all" data-en="Buyer Sign Up" data-ms="Daftar Pembeli" data-zh="买家注册" data-ja="買い手サインアップ">Buyer Sign Up</a>
+                        </div>
+                    </div>
+                    
+                    <!-- TRANSLATE WIDGET -->
+                    <div class="bg-white px-3 py-1.5 rounded-full flex items-center gap-2 text-xs border-2 border-rose-100 shadow-sm ml-2">
+                        <span class="trans-text" data-en="Language" data-ms="Bahasa" data-zh="语言" data-ja="言語">Language</span>
+                        <select id="globalLangSelect" onchange="changeGlobalLanguage()" class="bg-transparent text-rose-950 font-black focus:outline-none cursor-pointer">
+                            <option value="en">English</option>
+                            <option value="ms">Bahasa Melayu</option>
+                            <option value="zh">中文</option>
+                            <option value="ja">日本語</option>
+                        </select>
+                    </div>
+                </nav>
+
+                <!-- MOBILE DROPDOWN MENU PANEL -->
+                <div id="mobileMenu" class="w-full hidden md:hidden flex-col gap-2 pt-2 pb-2 border-t border-rose-100 font-bold text-sm text-left">
+                    <a href="index.html" class="trans-text px-4 py-2.5 text-gray-700 hover:bg-rose-50 rounded-xl" data-en="Home" data-ms="Laman Utama" data-zh="首页" data-ja="ホーム">Home</a>
+                    <a href="guidelines.html" class="trans-text px-4 py-2.5 bg-rose-50 text-rose-800 rounded-xl" data-en="Guidelines" data-ms="Garisan Panduan" data-zh="指南" data-ja="ガイドライン">Guidelines</a>
+                    <a href="buyer-profile.html" class="trans-text px-4 py-2.5 text-gray-700 hover:bg-rose-50 rounded-xl" data-en="My Account" data-ms="Akaun Saya" data-zh="我的账户" data-ja="マイアカウント">My Account</a>
+                    <a href="catalog.html" class="trans-text px-4 py-2.5 text-gray-700 hover:bg-rose-50 rounded-xl" data-en="Catalog" data-ms="Katalog" data-zh="目录" data-ja="カタログ">Catalog</a>
+                    <a href="checkout.html" class="trans-text px-4 py-2.5 text-gray-700 hover:bg-rose-50 rounded-xl" data-en="My Cart" data-ms="Troli Saya" data-zh="购物车" data-ja="マイカート">My Cart</a>
+                    <a href="tracking.html" class="trans-text px-4 py-2.5 text-gray-700 hover:bg-rose-50 rounded-xl" data-en="Track Order" data-ms="Jejak Pesanan" data-zh="订单跟踪" data-ja="注文追跡">Track Order</a>
+                    <a href="about.html" class="trans-text px-4 py-2.5 text-gray-700 hover:bg-rose-50 rounded-xl" data-en="About Us" data-ms="Tentang Kami" data-zh="关于我们" data-ja="私たちについて">About Us</a>
+                    <a href="register.html" class="trans-text px-4 py-2.5 text-gray-700 hover:bg-rose-50 rounded-xl" data-en="Seller Register" data-ms="Pendaftaran Penjual" data-zh="卖家注册" data-ja="セラー登録">Seller Register</a>
+                    <a href="buyer-register.html" class="trans-text px-4 py-2.5 text-gray-700 hover:bg-rose-50 rounded-xl" data-en="Buyer Sign Up" data-ms="Daftar Pembeli" data-zh="买家注册" data-ja="買い手サインアップ">Buyer Sign Up</a>
+                </div>
+
+            </div>
+        </header>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="pt-12 pb-16 px-6 text-center flex flex-col justify-center items-center">
+        <div class="max-w-5xl mx-auto bg-gradient-to-r from-rose-600 via-pink-600 to-rose-700 p-12 md:p-20 rounded-[3.5rem] shadow-[0_20px_60px_rgb(225,29,72,0.15)] text-white relative overflow-hidden">
+            
+            <span class="trans-text bg-white/15 text-rose-100 text-xs font-extrabold px-6 py-2.5 rounded-full uppercase tracking-widest backdrop-blur-md shadow-sm inline-block mb-6 border border-white/20"
+                data-en="Export Compliance & Rules"
+                data-ms="Pematuhan Eksport & Peraturan"
+                data-zh="出口合规与规则"
+                data-ja="輸出コンプライアンスとルール">
+                Export Compliance & Rules
+            </span>
+            
+            <h1 class="trans-text text-3xl sm:text-5xl md:text-6xl font-black mb-6 tracking-tight leading-tight"
+                data-en="International Shipping <br><span class='text-rose-200 drop-shadow-sm'>Terms & Conditions</span>"
+                data-ms="Terma & Syarat <br><span class='text-rose-200 drop-shadow-sm'>Penghantaran Antarabangsa</span>"
+                data-zh="国际运输 <br><span class='text-rose-200 drop-shadow-sm'>条款与条件</span>"
+                data-ja="国際配送 <br><span class='text-rose-200 drop-shadow-sm'>規約と条件</span>">
+                International Shipping <br><span class="text-rose-200 drop-shadow-sm">Terms & Conditions</span>
+            </h1>
+            
+            <p class="trans-text text-lg sm:text-xl text-rose-100 font-medium max-w-2xl mx-auto leading-relaxed"
+                data-en="Prior to making your purchase, you are responsible to ensure that the food product can be legally shipped and imported into your designated country. You may also check out from your local Customs office for additional information."
+                data-ms="Sebelum membuat pembelian, anda bertanggungjawab memastikan produk makanan boleh dihantar dan diimport secara sah ke negara anda. Anda juga boleh menyemak dengan pejabat Kastam tempatan anda untuk maklumat tambahan."
+                data-zh="在购买之前，您有责任确保食品可以合法运送并进口到您指定的国家。您也可以向当地海关办公室了解更多信息。"
+                data-ja="ご購入前に、食品が指定国へ合法的に出荷および輸入できることを確認する責任があります。詳細については、最寄りの税関にお問い合わせいただくこともできます。">
+                Prior to making your purchase, you are responsible to ensure that the food product can be legally shipped and imported into your designated country. You may also check out from your local Customs office for additional information.
+            </p>
+        </div>
+    </section>
+
+    <!-- TERMS CONTAINER -->
+    <section class="py-12 px-6 max-w-5xl mx-auto w-full space-y-8">
+        
+        <!-- 1. Acceptance of Terms -->
+        <div class="bg-white/90 backdrop-blur-sm p-8 md:p-10 rounded-[2.5rem] shadow-[0_10px_30px_rgb(225,29,72,0.03)] border-2 border-rose-100">
+            <h3 class="trans-text text-xl font-black text-rose-950 mb-3 flex items-center gap-2"
+                data-en="1. Acceptance of Terms"
+                data-ms="1. Penerimaan Terma"
+                data-zh="1. 接受条款"
+                data-ja="1. 利用規約の同意">
+                <span class="bg-rose-100 text-rose-700 w-8 h-8 rounded-xl flex items-center justify-center text-xs font-bold">1</span> Acceptance of Terms
+            </h3>
+            <p class="trans-text text-gray-600 text-sm font-medium leading-relaxed"
+                data-en="By placing an order for international shipping on our platform, you agree to comply with and be bound by the terms and conditions outlined below. These terms constitute a legally binding agreement between you (&quot;the customer&quot;) and Local Export+ (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;)."
+                data-ms="Dengan membuat pesanan untuk penghantaran antarabangsa di platform kami, anda bersetuju untuk mematuhi dan terikat dengan terma dan syarat yang gariskan di bawah. Terma ini membentuk perjanjian mengikat dari segi undang-undang antara anda (&quot;pelanggan&quot;) dan Local Export+ (&quot;kami&quot;)."
+                data-zh="通过在我们的平台上订购国际运输，您同意遵守并受以下条款和条件的约束。这些条款构成您（“客户”）与 Local Export+（“我们”）之间具有法律约束力的协议。"
+                data-ja="当プラットフォームで国際配送の注文を行うことにより、お客様は以下の利用規約に同意し、それに拘束されるものとします。">
+                By placing an order for international shipping on our platform, you agree to comply with and be bound by the terms and conditions outlined below. These terms constitute a legally binding agreement between you ("the customer") and Local Export+ ("we," "us," or "our").
+            </p>
+        </div>
+
+        <!-- 2. Shipping Policy -->
+        <div class="bg-white/90 backdrop-blur-sm p-8 md:p-10 rounded-[2.5rem] shadow-[0_10px_30px_rgb(225,29,72,0.03)] border-2 border-rose-100 space-y-4">
+            <h3 class="trans-text text-xl font-black text-rose-950 mb-3 flex items-center gap-2"
+                data-en="2. Shipping Policy"
+                data-ms="2. Dasar Penghantaran"
+                data-zh="2. 运输政策"
+                data-ja="2. 配送ポリシー">
+                <span class="bg-rose-100 text-rose-700 w-8 h-8 rounded-xl flex items-center justify-center text-xs font-bold">2</span> Shipping Policy
+            </h3>
+            <div class="space-y-3 text-sm font-medium text-gray-600">
+                <p class="trans-text"
+                    data-en="<b>2.1 Delivery Address:</b> Shipments cannot be delivered to PO boxes or postal codes. Shipments are delivered to the consignee's address given by customer upon checkout and payment made successfully."
+                    data-ms="<b>2.1 Alamat Penghantaran:</b> Penghantaran tidak boleh dihantar ke peti surat atau poskod. Penghantaran dihantar ke alamat penerima yang diberikan oleh pelanggan semasa daftar keluar."
+                    data-zh="<b>2.1 收货地址：</b> 货件不能送达至邮政信箱。货件将送达至客户在结账且付款成功时提供的收货人地址。"
+                    data-ja="<b>2.1 配送先住所：</b> 私書箱への配送はできません。チェックアウト時に顧客が指定した受取人の住所に配送されます。">
+                    <b>2.1 Delivery Address:</b> Shipments cannot be delivered to PO boxes or postal codes. Shipments are delivered to the consignee's address given by customer upon checkout and payment made successfully.
+                </p>
+                <p class="trans-text"
+                    data-en="<b>2.2 Shipping Methods:</b> We offer international shipping services using trusted courier partners."
+                    data-ms="<b>2.2 Kaedah Penghantaran:</b> Kami menawarkan perkhidmatan penghantaran antarabangsa menggunakan rakan kongsi kurier yang dipercayai."
+                    data-zh="<b>2.2 运输方式：</b> 我们通过值得信赖的快递合作伙伴提供国际运输服务。"
+                    data-ja="<b>2.2 配送方法：</b> 信頼できる配送パートナーを使用して国際配送サービスを提供しています。">
+                    <b>2.2 Shipping Methods:</b> We offer international shipping services using trusted courier partners.
+                </p>
+                <p class="trans-text"
+                    data-en="<b>2.3 Inspection:</b> Couriers hold the right to open and inspect a shipment without notice for safety, security, customs or other regulatory reasons."
+                    data-ms="<b>2.3 Pemeriksaan:</b> Kurier mempunyai hak untuk membuka dan memeriksa penghantaran tanpa Notis atas sebab keselamatan, kastam atau peraturan lain."
+                    data-zh="<b>2.3 检查：</b> 出于安全、海关或其他监管原因，快递公司有权在不通知的情况下打开并检查货件。"
+                    data-ja="<b>2.3 検査：</b> 配送業者は、安全性、セキュリティ、税関その他の規制上の理由により、通知なしに荷物を開封して検査する権利を有します。">
+                    <b>2.3 Inspection:</b> Couriers hold the right to open and inspect a shipment without notice for safety, security, customs or other regulatory reasons.
+                </p>
+                <p class="trans-text"
+                    data-en="<b>2.4 Shipping Charges:</b> Shipping charges are calculated based on factors including the destination country, package volumetric weight, and actual weight, displayed clearly during checkout."
+                    data-ms="<b>2.4 Caj Penghantaran:</b> Caj penghantaran dikira berdasarkan faktor termasuk negara destinasi, berat volumetrik pakej, dan berat sebenar, dipaparkan dengan jelas semasa daftar keluar."
+                    data-zh="<b>2.4 运费：</b> 运费根据目的地国家、包裹体积重量和实际重量等因素计算，并在结账时清晰显示。"
+                    data-ja="<b>2.4 配送料：</b> 配送料は、宛先国、荷物の容積重量、実重量などの要因に基づいて計算され、チェックアウト時に明確に表示されます。">
+                    <b>2.4 Shipping Charges:</b> Shipping charges are calculated based on factors including the destination country, package volumetric weight, and actual weight, displayed clearly during checkout.
+                </p>
+                <p class="trans-text"
+                    data-en="<b>2.5 Customs and Duties:</b> If the value of your order exceeds the de minimis value in your destination country, the customer is responsible for any customs duties, taxes, or import fees imposed by the destination country prior to delivery."
+                    data-ms="<b>2.5 Kastam dan Duti:</b> Jika nilai pesanan anda melebihi nilai de minimis di negara destinasi anda, pelanggan bertanggungjawab ke atas sebarang duti kastam, cukai, atau yuran import."
+                    data-zh="<b>2.5 海关与关税：</b> 如果您的订单价值超过您所在目的国的免征额，客户需负责承担目的国在交付前征收的任何关税、税款或进口费用。"
+                    data-ja="<b>2.5 関税および税金：</b> 注文の価値が宛先国の免税点を超える場合、顧客は配達前に宛先国によって課される関税、税金、または輸入手数料に対して責任を負います。">
+                    <b>2.5 Customs and Duties:</b> If the value of your order exceeds the de minimis value in your destination country, the customer is responsible for any customs duties, taxes, or import fees imposed by the destination country prior to delivery.
+                </p>
+            </div>
+        </div>
+
+        <!-- 3. Prohibited and Restricted Food Items -->
+        <div class="bg-white/90 backdrop-blur-sm p-8 md:p-10 rounded-[2.5rem] shadow-[0_10px_30px_rgb(225,29,72,0.03)] border-2 border-rose-100 space-y-4">
+            <h3 class="trans-text text-xl font-black text-rose-950 mb-3 flex items-center gap-2"
+                data-en="3. Prohibited & Restricted Food Items"
+                data-ms="3. Barangan Makanan Dilarang & Terhad"
+                data-zh="3. 违禁与受限制食品"
+                data-ja="3. 禁止および制限された食品">
+                <span class="bg-rose-100 text-rose-700 w-8 h-8 rounded-xl flex items-center justify-center text-xs font-bold">3</span> Prohibited & Restricted Food Items
+            </h3>
+            <p class="trans-text text-gray-600 text-sm font-medium"
+                data-en="All packages are subject to Customs inspection and clearance. To avoid confiscation, the following items will <b>NOT BE ACCEPTED</b> for international shipping:"
+                data-ms="Semua pakej tertakluk kepada pemeriksaan dan pelepasan Kastam. Untuk mengelakkan rampasan, item berikut <b>TIDAK AKAN DITERIMA</b> untuk penghantaran antarabangsa:"
+                data-zh="所有包裹均需接受海关检查和清关。为避免没收，国际运输将<b>不接受</b>以下物品："
+                data-ja="すべての荷物は税関の検査と通関の対象となります。没収を避けるため、以下の品目は国際配送の<b>対象外</b>となります：">
+                All packages are subject to Customs inspection and clearance. To avoid confiscation, the following items will <b>NOT BE ACCEPTED</b> for international shipping:
+            </p>
+            <ul class="list-disc pl-5 text-sm font-medium text-gray-600 space-y-2">
+                <li class="trans-text"
+                    data-en="<b>Fresh & Frozen Foods:</b> Perishable items requiring refrigeration or specific environmental control."
+                    data-ms="<b>Makanan Segar & Sejuk Beku:</b> Item mudah rosak yang memerlukan penyejukan atau kawalan persekitaran tertentu."
+                    data-zh="<b>生鲜与冷冻食品：</b> 需要冷藏或特定环境控制的易腐烂物品。"
+                    data-ja="<b>生鮮・冷凍食品：</b> 冷蔵または特定の環境制御が必要な傷みやすい品目。">
+                    <b>Fresh & Frozen Foods:</b> Perishable items requiring refrigeration or specific environmental control.
+                </li>
+                <li class="trans-text"
+                    data-en="<b>Restricted Permits:</b> Sugar, rice, and grains (including rice flour, rice polishing, rice bran, and rice vermicelli)."
+                    data-ms="<b>Permit Terhad:</b> Gula, beras, dan bijirin (termasuk tepung beras, hiasan beras, dedak beras, dan bihun beras)."
+                    data-zh="<b>受限制许可：</b> 糖、大米和谷物（包括米粉、大米抛光粉、米糠和米线）。"
+                    data-ja="<b>制限品目：</b> 砂糖、米、穀物（米粉、米ぬか、ビーフンなどを含む）。">
+                    <b>Restricted Permits:</b> Sugar, rice, and grains (including rice flour, rice polishing, rice bran, and rice vermicelli).
+                </li>
+                <li class="trans-text"
+                    data-en="All products in liquid forms."
+                    data-ms="Semua produk dalam bentuk cecair."
+                    data-zh="所有液态产品。"
+                    data-ja="液体状のすべての製品。">
+                    All products in liquid forms.
+                </li>
+                <li class="trans-text"
+                    data-en="Any meat, bones, skin, or animal/poultry derivatives."
+                    data-ms="Sebarang daging, tulang, kulit, atau terbitan haiwan/unggas."
+                    data-zh="任何肉类、骨骼、皮肤或动物/家禽衍生物。"
+                    data-ja="肉、骨、皮、または動物/家禽の派生物。">
+                    Any meat, bones, skin, or animal/poultry derivatives.
+                </li>
+                <li class="trans-text"
+                    data-en="Medication or pharmaceutical products without supporting doctor prescriptions."
+                    data-ms="Ubat atau produk farmaseutikal tanpa preskripsi doktor sokongan."
+                    data-zh="没有医生处方支持的药物或医药产品。"
+                    data-ja="医師の処方箋がない医薬品または医薬品。">
+                    Medication or pharmaceutical products without supporting doctor prescriptions.
+                </li>
+            </ul>
+        </div>
+
+        <!-- 4. Order Processing and Delivery -->
+        <div class="bg-white/90 backdrop-blur-sm p-8 md:p-10 rounded-[2.5rem] shadow-[0_10px_30px_rgb(225,29,72,0.03)] border-2 border-rose-100 space-y-3">
+            <h3 class="trans-text text-xl font-black text-rose-950 mb-3 flex items-center gap-2"
+                data-en="4. Order Processing & Delivery"
+                data-ms="4. Pemprosesan Pesanan & Penghantaran"
+                data-zh="4. 订单处理与交付"
+                data-ja="4. 注文処理と配送">
+                <span class="bg-rose-100 text-rose-700 w-8 h-8 rounded-xl flex items-center justify-center text-xs font-bold">4</span> Order Processing & Delivery
+            </h3>
+            <p class="trans-text text-gray-600 text-sm font-medium"
+                data-en="<b>4.1 Processing:</b> We strive to process orders promptly upon receipt. Parcels ship within 3 to 5 business days from Malaysia."
+                data-ms="<b>4.1 Pemprosesan:</b> Kami berusaha untuk memproses pesanan dengan segera setelah diterima. Bungkusan dihantar dalam masa 3 hingga 5 hari bekerja dari Malaysia."
+                data-zh="<b>4.1 处理：</b> 我们力求在收到订单后立即处理。包裹将在马来西亚境内 3 至 5 个工作日内发货。"
+                data-ja="<b>4.1 処理：</b> 受領次第、速やかに注文を処理するよう努めます。小包はマレーシアから3〜5営業日以内に発送されます。">
+                <b>4.1 Processing:</b> We strive to process orders promptly upon receipt. Parcels ship within 3 to 5 business days from Malaysia.
+            </p>
+            <p class="trans-text text-gray-600 text-sm font-medium"
+                data-en="<b>4.2 Delivery Times:</b> Estimated timelines are general guidelines. Actual delivery may vary due to customs processing or local holidays."
+                data-ms="<b>4.2 Masa Penghantaran:</b> Garis masa dianggarkan adalah garis panduan umum. Penghantaran sebenar mungkin berbeza kerana pemprosesan kastam atau cuti tempatan."
+                data-zh="<b>4.2 交付时间：</b> 估计时间表为一般指南。由于海关处理或当地节假日，实际交付可能会有所不同。"
+                data-ja="<b>4.2 配送時間：</b> 推定タイムラインは一般的なガイドラインです。実際の配送は、税関処理や現地の祝日により異なる場合があります。">
+                <b>4.2 Delivery Times:</b> Estimated timelines are general guidelines. Actual delivery may vary due to customs processing or local holidays.
+            </p>
+            <p class="trans-text text-gray-600 text-sm font-medium"
+                data-en="<b>4.3 Tracking:</b> Tracking information is provided via email notification once picked up successfully."
+                data-ms="<b>4.3 Penjejakan:</b> Maklumat penjejakan disediakan melalui pemberitahuan e-mel setelah berjaya diambil."
+                data-zh="<b>4.3 跟踪：</b> 成功揽收后，将通过电子邮件通知提供跟踪信息。"
+                data-ja="<b>4.3 追跡：</b> 集荷が正常に行われると、メール通知で追跡情報が提供されます。">
+                <b>4.3 Tracking:</b> Tracking information is provided via email notification once picked up successfully.
+            </p>
+        </div>
+
+        <!-- 5. Order Changes, Cancellations, Refunds -->
+        <div class="bg-white/90 backdrop-blur-sm p-8 md:p-10 rounded-[2.5rem] shadow-[0_10px_30px_rgb(225,29,72,0.03)] border-2 border-rose-100 space-y-3">
+            <h3 class="trans-text text-xl font-black text-rose-950 mb-3 flex items-center gap-2"
+                data-en="5. Changes, Cancellations & Refunds"
+                data-ms="5. Perubahan, Pembatalan & Bayaran Balik"
+                data-zh="5. 更改、取消与退款"
+                data-ja="5. 変更、キャンセル、返金">
+                <span class="bg-rose-100 text-rose-700 w-8 h-8 rounded-xl flex items-center justify-center text-xs font-bold">5</span> Changes, Cancellations & Refunds
+            </h3>
+            <p class="trans-text text-gray-600 text-sm font-medium"
+                data-en="<b>5.1 Changes:</b> After placing an order, changes to addresses or details may not be feasible."
+                data-ms="<b>5.1 Perubahan:</b> Selepas membuat pesanan, perubahan pada alamat atau butiran mungkin tidak dapat dilakukan."
+                data-zh="<b>5.1 更改：</b> 下单后，对地址或详细信息的更改可能无法实现。"
+                data-ja="<b>5.1 変更：</b> 注文完了後、住所や詳細の変更はできない場合があります。">
+                <b>5.1 Changes:</b> After placing an order, changes to addresses or details may not be feasible.
+            </p>
+            <p class="trans-text text-gray-600 text-sm font-medium"
+                data-en="<b>5.2 Cancellations:</b> Must be submitted promptly. Once picked up and shipped, cancellation is not possible."
+                data-ms="<b>5.2 Pembatalan:</b> Mesti dikemukakan dengan segera. Sebaik sahaja diambil dan dihantar, pembatalan tidak mungkin dilakukan."
+                data-zh="<b>5.2 取消：</b> 必须及时提交。一旦揽收并寄出，将无法取消。"
+                data-ja="<b>5.2 キャンセル：</b> 速やかに提出する必要があります。集荷および発送後はキャンセルできません。">
+                <b>5.2 Cancellations:</b> Must be submitted promptly. Once picked up and shipped, cancellation is not possible.
+            </p>
+            <p class="trans-text text-gray-600 text-sm font-medium"
+                data-en="<b>5.3 Refunds:</b> Shipping charges are generally non-refundable unless a shipping-related error on our part occurs."
+                data-ms="<b>5.3 Bayaran Balik:</b> Caj penghantaran secara amnya tidak dikembalikan melainkan ralat berkaitan penghantaran dari pihak kami berlaku."
+                data-zh="<b>5.3 退款：</b> 除非发生我们方面的与运输相关的错误，否则运费通常不可退还。"
+                data-ja="<b>5.3 返金：</b> 当方側の配送関連エラーが発生しない限り、配送料は原則として返金されません。">
+                <b>5.3 Refunds:</b> Shipping charges are generally non-refundable unless a shipping-related error on our part occurs.
+            </p>
+        </div>
+
+        <!-- 6. Limitation of Liability & Contact -->
+        <div class="bg-white/90 backdrop-blur-sm p-8 md:p-10 rounded-[2.5rem] shadow-[0_10px_30px_rgb(225,29,72,0.03)] border-2 border-rose-100 space-y-4">
+            <h3 class="trans-text text-xl font-black text-rose-950 mb-3 flex items-center gap-2"
+                data-en="6. Limitation of Liability & Contact"
+                data-ms="6. Had Liabiliti & Hubungi"
+                data-zh="6. 责任限制与联系方式"
+                data-ja="6. 責任の制限と連絡先">
+                <span class="bg-rose-100 text-rose-700 w-8 h-8 rounded-xl flex items-center justify-center text-xs font-bold">6</span> Limitation of Liability & Contact
+            </h3>
+            <p class="trans-text text-gray-600 text-sm font-medium"
+                data-en="We are not liable for any damages, losses, or liabilities arising from delays, customs clearance, or delivery issues beyond our control (Force Majeure)."
+                data-ms="Kami tidak bertanggungjawab atas sebarang kerosakan, kerugian, atau liabiliti yang timbul daripada kelewatan, pelepasan kastam, atau isu penghantaran di luar kawalan kami (Force Majeure)."
+                data-zh="我们对因超出我们控制范围（不可抗力）的延迟、清关或交付问题而产生的任何损害、损失或责任概不负责。"
+                data-ja="当社は、当社の制御不能な遅延、通関手続き、配送上の問題（不可抗力）に起因するいかなる損害、損失、または責任に対しても責任を負いません。">
+                We are not liable for any damages, losses, or liabilities arising from delays, customs clearance, or delivery issues beyond our control (Force Majeure).
+            </p>
+            <div class="bg-rose-50/70 p-5 rounded-2xl border border-rose-100 text-xs font-bold text-rose-950">
+                <p class="trans-text"
+                    data-en="Need assistance? Contact our support team at <span class='text-rose-600'>support@localexportplus.com</span> or WhatsApp us."
+                    data-ms="Perlukan bantuan? Hubungi pasukan sokongan kami di <span class='text-rose-600'>support@localexportplus.com</span> atau WhatsApp kami."
+                    data-zh="需要帮助？请通过 <span class='text-rose-600'>support@localexportplus.com</span> 联系我们的支持团队或通过 WhatsApp 联系我们。"
+                    data-ja="サポートが必要ですか？ <span class='text-rose-600'>support@localexportplus.com</span> までサポートチームにご連絡いただくか、WhatsAppでお問い合わせください。">
+                    Need assistance? Contact our support team at <span class="text-rose-600">support@localexportplus.com</span> or WhatsApp us.
+                </p>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="trans-text text-rose-700/80 py-10 text-center text-xs font-bold mt-auto"
+        data-en="Local Export+ Innovators | Export Smarter. Grow Globally"
+        data-ms="Inovator Local Export+ | Eksport Lebih Bijak. Berkembang Secara Global"
+        data-zh="Local Export+ 创新者 | 智能出口。全球成长"
+        data-ja="Local Export+ イノベーター | より賢く輸出。グローバルに成長">
+        Local Export+ Innovators | Export Smarter. Grow Globally
+    </footer>
+
+    <!-- NEMO AI CHAT WIDGET -->
+    <div class="fixed bottom-8 right-8 z-50 flex flex-col items-end">
+        <div id="aiChatWindow" class="hidden mb-4 w-80 sm:w-96 bg-white rounded-[2.5rem] shadow-[0_20px_60px_rgb(225,29,72,0.12)] border-4 border-rose-100 overflow-hidden flex flex-col transform transition-all duration-300">
+            <div class="bg-gradient-to-r from-rose-600 to-pink-600 text-white p-5 flex justify-between items-center shadow-md">
+                <div class="font-black flex items-center gap-3">
+                    <span class="text-xs bg-white/25 px-2.5 py-1 rounded-lg font-bold">AI</span> 
+                    <div>
+                        <div class="text-base">Nemo AI Assistant</div>
+                        <div class="text-[10px] text-rose-100 font-extrabold flex items-center gap-1">
+                            <span class="w-2 h-2 rounded-full bg-rose-200 animate-ping"></span> Online & Ready
+                        </div>
+                    </div>
+                </div>
+                <button onclick="toggleChat()" class="text-white hover:text-rose-200 font-black text-2xl">&times;</button>
+            </div>
+            
+            <div id="chatMessages" class="p-5 bg-rose-50/40 h-72 overflow-y-auto flex flex-col gap-3 text-sm font-medium">
+                <div id="nemoGreeting" class="trans-text bg-white border border-rose-100 text-gray-700 p-4 rounded-2xl rounded-tl-sm self-start max-w-[85%] shadow-sm"
+                    data-en="Hello! I am Nemo, your export compliance guide. Review our shipping terms above before placing your order!"
+                    data-ms="Hello! Saya Nemo, panduan pematuhan eksport anda. Semak terma penghantaran kami di atas sebelum membuat pesanan anda!"
+                    data-zh="您好！我是Nemo，您的出口合规向导。在下单前请先查看上面的运输条款！"
+                    data-ja="こんにちは！私はネモです。注文する前に、上記の配送条件を確認してください！">
+                    Hello! I am Nemo, your export compliance guide. Review our shipping terms above before placing your order!
+                </div>
+            </div>
+            
+            <div class="p-4 bg-white border-t border-rose-100 flex gap-2 items-center">
+                <input type="text" id="chatInput" placeholder="Type a message..." class="w-full bg-rose-50/60 px-4 py-3 rounded-full focus:outline-none focus:ring-2 focus:ring-rose-400 text-sm font-medium transition-all">
+                <button onclick="sendMessage()" class="trans-text bg-rose-600 text-white w-12 h-12 rounded-full font-black text-xs flex items-center justify-center hover:bg-rose-700 transition-all shadow-md shrink-0"
+                    data-en="Send" data-ms="Hantar" data-zh="发送" data-ja="送信">Send</button>
+            </div>
+        </div>
+
+        <div class="relative group cursor-pointer" onclick="toggleChat()">
+            <div class="absolute right-24 top-1/2 -translate-y-1/2 bg-white text-rose-950 font-black text-xs px-4 py-2 rounded-2xl shadow-xl opacity-0 group-hover:opacity-100 transform translate-x-3 group-hover:translate-x-0 transition-all duration-300 pointer-events-none whitespace-nowrap border-2 border-rose-100">
+                Chat with Nemo
+            </div>
+            <button class="bg-gradient-to-br from-rose-600 via-pink-600 to-rose-700 text-white w-16 h-16 rounded-full shadow-[0_10px_30px_rgb(225,29,72,0.3)] flex items-center justify-center font-black text-xs transform hover:scale-110 hover:-translate-y-1 transition-all duration-300 border-4 border-white z-50">NEMO</button>
+            <span class="absolute top-0 right-0 flex h-5 w-5">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-5 w-5 bg-rose-500 border-2 border-white"></span>
+            </span>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script>
+        function toggleMoreMenu(event) {
+            event.stopPropagation();
+            const dropdown = document.getElementById('moreDropdown');
+            dropdown.classList.toggle('hidden');
+        }
+
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+        }
+
+        window.addEventListener('click', () => {
+            const dropdown = document.getElementById('moreDropdown');
+            if (dropdown && !dropdown.classList.contains('hidden')) {
+                dropdown.classList.add('hidden');
+            }
+        });
+
+        function toggleChat() {
+            const chatWindow = document.getElementById('aiChatWindow');
+            chatWindow.classList.toggle('hidden');
+        }
+
+        function sendMessage() {
+            const inputField = document.getElementById('chatInput');
+            const messageText = inputField.value.trim();
+            if (messageText === "") return; 
+
+            const chatMessages = document.getElementById('chatMessages');
+            const userBubble = document.createElement('div');
+            userBubble.className = "bg-rose-600 text-white p-3.5 rounded-2xl rounded-tr-sm self-end max-w-[85%] shadow-sm mt-1 text-sm";
+            userBubble.innerText = messageText;
+            chatMessages.appendChild(userBubble);
+            inputField.value = "";
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            setTimeout(() => {
+                const aiBubble = document.createElement('div');
+                aiBubble.className = "bg-white border border-rose-100 text-gray-700 p-3.5 rounded-2xl rounded-tl-sm self-start max-w-[85%] shadow-sm mt-1 text-sm trans-text";
+                aiBubble.setAttribute('data-en', "I can help clarify any of our international shipping rules or prohibited item policies!");
+                aiBubble.setAttribute('data-ms', "Saya boleh membantu menjelaskan mana-mana peraturan penghantaran antarabangsa atau dasar barangan dilarang!");
+                aiBubble.setAttribute('data-zh', "我可以帮您澄清任何国际运输规则或违禁物品政策！");
+                aiBubble.setAttribute('data-ja', "国際配送ルールや禁止品目ポリシーについてご不明な点がございましたら、お手伝いいたします！");
+                
+                const lang = document.getElementById('globalLangSelect').value;
+                aiBubble.innerText = aiBubble.getAttribute(`data-${lang}`) || aiBubble.getAttribute('data-en');
+                
+                chatMessages.appendChild(aiBubble);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 800);
+        }
+
+        function changeGlobalLanguage() {
+            const lang = document.getElementById('globalLangSelect').value;
+            document.querySelectorAll('.trans-text').forEach(el => {
+                if(el.getAttribute(`data-${lang}`)) {
+                    el.innerHTML = el.getAttribute(`data-${lang}`);
+                }
+            });
+
+            const nemoG = document.getElementById('nemoGreeting');
+            if(nemoG && nemoG.getAttribute(`data-${lang}`)) {
+                nemoG.innerHTML = nemoG.getAttribute(`data-${lang}`);
+            }
+        }
+    </script>
+</body>
+</html>

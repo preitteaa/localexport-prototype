@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Tracking | Local Export+</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-rose-50 via-pink-50 to-neutral-50 text-gray-800 font-sans scroll-smooth min-h-screen flex flex-col">
+
+    <div class="p-4">
+        <header class="bg-white/90 backdrop-blur-md text-rose-950 shadow-[0_8px_30px_rgb(225,29,72,0.04)] rounded-3xl md:rounded-full sticky top-4 z-50 transition-all border border-rose-100">
+            <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+                
+                <div class="w-full md:w-auto flex justify-between items-center">
+                    <div class="flex items-center gap-3">
+                        <button onclick="history.back()" class="bg-rose-100 hover:bg-rose-200 text-rose-900 px-3.5 py-1.5 rounded-full font-bold text-xs transition-all flex items-center gap-1 shadow-sm cursor-pointer">
+                            <span>←</span> Back
+                        </button>
+                        <a href="index.html" class="text-2xl font-black tracking-wide bg-gradient-to-r from-rose-700 to-pink-600 bg-clip-text text-transparent flex items-center gap-1">
+                            Local Export<span class="text-rose-500 text-3xl">+</span>
+                        </a>
+                    </div>
+                    <button onclick="toggleMobileMenu()" class="md:hidden bg-rose-50 text-rose-800 p-2.5 rounded-xl border border-rose-100 font-bold text-lg">
+                        ☰
+                    </button>
+                </div>
+                
+                <nav class="space-x-2 hidden md:flex items-center font-bold text-sm">
+                    <a href="index.html" class="trans-text hover:text-rose-600 transition-all px-3 py-2">Home</a>
+                    <a href="guidelines.html" class="trans-text hover:text-rose-600 transition-all px-3 py-2">Guidelines</a>
+                    <a href="buyer-profile.html" class="trans-text hover:text-rose-600 transition-all px-3 py-2">My Account</a>
+                    
+                    <div class="relative">
+                        <button onclick="toggleMoreMenu(event)" class="bg-rose-50 hover:bg-rose-100 text-rose-800 px-4 py-2 rounded-full shadow-sm flex items-center gap-1 transition-all border border-rose-100 font-bold text-sm cursor-pointer">
+                            More ▾
+                        </button>
+                        <div id="moreDropdown" class="absolute right-0 mt-2 w-52 bg-white border border-rose-100 rounded-2xl shadow-xl hidden flex-col p-2 z-50 gap-1">
+                            <a href="catalog.html" class="block px-4 py-2.5 text-xs font-bold text-gray-700 hover:bg-rose-50 hover:text-rose-900 rounded-xl transition-all">Catalog</a>
+                            <a href="checkout.html" class="block px-4 py-2.5 text-xs font-bold text-gray-700 hover:bg-rose-50 hover:text-rose-900 rounded-xl transition-all">My Cart</a>
+                            <a href="tracking.html" class="block px-4 py-2.5 text-xs font-bold text-rose-800 bg-rose-50 rounded-xl transition-all">Track Order</a>
+                            <a href="about.html" class="block px-4 py-2.5 text-xs font-bold text-gray-700 hover:bg-rose-50 hover:text-rose-900 rounded-xl transition-all">About Us</a>
+                            <a href="register.html" class="block px-4 py-2.5 text-xs font-bold text-gray-700 hover:bg-rose-50 hover:text-rose-900 rounded-xl transition-all">Seller Register</a>
+                            <a href="buyer-register.html" class="block px-4 py-2.5 text-xs font-bold text-gray-700 hover:bg-rose-50 hover:text-rose-900 rounded-xl transition-all">Buyer Sign Up</a>
+                        </div>
+                    </div>
+                </nav>
+
+                <div id="mobileMenu" class="w-full hidden md:hidden flex-col gap-2 pt-2 pb-2 border-t border-rose-100 font-bold text-sm text-left">
+                    <a href="index.html" class="px-4 py-2.5 text-gray-700 hover:bg-rose-50 rounded-xl">Home</a>
+                    <a href="guidelines.html" class="px-4 py-2.5 text-gray-700 hover:bg-rose-50 rounded-xl">Guidelines</a>
+                    <a href="buyer-profile.html" class="px-4 py-2.5 text-gray-700 hover:bg-rose-50 rounded-xl">My Account</a>
+                    <a href="catalog.html" class="px-4 py-2.5 text-gray-700 hover:bg-rose-50 rounded-xl">Catalog</a>
+                    <a href="checkout.html" class="px-4 py-2.5 text-gray-700 hover:bg-rose-50 rounded-xl">My Cart</a>
+                    <a href="tracking.html" class="px-4 py-2.5 bg-rose-50 text-rose-800 rounded-xl">Track Order</a>
+                    <a href="about.html" class="px-4 py-2.5 text-gray-700 hover:bg-rose-50 rounded-xl">About Us</a>
+                    <a href="register.html" class="px-4 py-2.5 text-gray-700 hover:bg-rose-50 rounded-xl">Seller Register</a>
+                    <a href="buyer-register.html" class="px-4 py-2.5 text-gray-700 hover:bg-rose-50 rounded-xl">Buyer Sign Up</a>
+                </div>
+
+            </div>
+        </header>
+    </div>
+
+    <main class="py-10 px-6 max-w-4xl mx-auto w-full space-y-8 flex-grow">
+        
+        <div class="text-center">
+            <h1 class="text-2xl sm:text-3xl font-black text-rose-600 tracking-wide pb-2 border-b-2 border-rose-200 inline-block">Real-Time Order Tracking</h1>
+            <p class="text-gray-500 text-xs font-bold mt-2">📦 Monitor your cross-border export package status live</p>
+        </div>
+
+        <div class="bg-white/90 backdrop-blur-md p-8 rounded-[2.5rem] shadow-sm border border-rose-100 space-y-8">
+            
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-rose-100 pb-6">
+                <div>
+                    <span class="text-xs font-bold text-gray-400">Order ID:</span>
+                    <h3 id="displayOrderId" class="text-base font-black text-rose-950">EXP-984210</h3>
+                </div>
+                <div>
+                    <span class="text-xs font-bold text-gray-400">Order Date:</span>
+                    <p id="displayDate" class="text-xs font-black text-rose-950">2026-08-25</p>
+                </div>
+                <div>
+                    <span class="text-xs font-bold text-gray-400">Current Status:</span>
+                    <span id="badgeStatus" class="inline-block px-3 py-1 bg-amber-100 text-amber-800 rounded-full text-xs font-extrabold uppercase tracking-wider">Processing</span>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-4 bg-rose-50/50 p-4 rounded-2xl border border-rose-100">
+                <div id="displayItemName" class="font-black text-sm text-rose-950">Bisrotti - Crunchy Bread with Rich Garlic Flavour (Qty: 1)</div>
+            </div>
+
+            <div class="py-6">
+                <div class="relative flex justify-between max-w-2xl mx-auto">
+                    <div class="absolute top-1/2 left-0 transform -translate-y-1/2 w-full h-1 bg-rose-100 z-0"></div>
+                    <div id="progressLine" class="absolute top-1/2 left-0 transform -translate-y-1/2 h-1 bg-rose-600 z-0 transition-all duration-500" style="width: 0%;"></div>
+
+                    <div class="relative z-10 flex flex-col items-center">
+                        <div id="step1Circle" class="w-10 h-10 rounded-full bg-rose-600 text-white font-black flex items-center justify-center text-xs shadow-md border-2 border-white">✓</div>
+                        <span class="text-xs font-bold text-rose-950 mt-2">Processing</span>
+                    </div>
+
+                    <div class="relative z-10 flex flex-col items-center">
+                        <div id="step2Circle" class="w-10 h-10 rounded-full bg-rose-100 text-rose-400 font-black flex items-center justify-center text-xs shadow-sm border-2 border-white">2</div>
+                        <span class="text-xs font-bold text-gray-400 mt-2" id="step2Text">Shipped Out</span>
+                    </div>
+
+                    <div class="relative z-10 flex flex-col items-center">
+                        <div id="step3Circle" class="w-10 h-10 rounded-full bg-rose-100 text-rose-400 font-black flex items-center justify-center text-xs shadow-sm border-2 border-white">3</div>
+                        <span class="text-xs font-bold text-gray-400 mt-2" id="step3Text">Delivered</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-rose-50/70 p-6 rounded-2xl border border-rose-100 space-y-3">
+                <div class="text-xs font-black text-rose-950 uppercase tracking-wider">🛠️ Demo Controls: Change Status</div>
+                <p class="text-xs text-gray-500">Click buttons below to simulate how the tracking bar updates in real time:</p>
+                <div class="flex flex-wrap gap-3 pt-2">
+                    <button onclick="updateOrderStatus('processing')" class="bg-white hover:bg-rose-100 text-rose-700 border border-rose-200 px-4 py-2 rounded-xl text-xs font-bold transition-all shadow-xs cursor-pointer">Set as Processing</button>
+                    <button onclick="updateOrderStatus('shipped')" class="bg-white hover:bg-rose-100 text-rose-700 border border-rose-200 px-4 py-2 rounded-xl text-xs font-bold transition-all shadow-xs cursor-pointer">Set as Shipped Out</button>
+                    <button onclick="updateOrderStatus('delivered')" class="bg-white hover:bg-rose-100 text-rose-700 border border-rose-200 px-4 py-2 rounded-xl text-xs font-bold transition-all shadow-xs cursor-pointer">Set as Delivered</button>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer class="text-rose-700/80 py-10 text-center text-xs font-bold mt-auto">
+        Local Export+ Innovators | Export Smarter. Grow Globally
+    </footer>
+
+    <script>
+        function toggleMoreMenu(event) {
+            event.stopPropagation();
+            const dropdown = document.getElementById('moreDropdown');
+            dropdown.classList.toggle('hidden');
+        }
+
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+        }
+
+        window.addEventListener('click', () => {
+            const dropdown = document.getElementById('moreDropdown');
+            if (dropdown && !dropdown.classList.contains('hidden')) {
+                dropdown.classList.add('hidden');
+            }
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const order = JSON.parse(localStorage.getItem('activeOrder'));
+            if (order) {
+                document.getElementById('displayOrderId').innerText = order.orderId;
+                document.getElementById('displayDate').innerText = order.date;
+                document.getElementById('displayItemName').innerText = `${order.item.name} (Qty: ${order.item.quantity || 1})`;
+                renderStatus(order.status);
+            } else {
+                renderStatus('processing');
+            }
+        });
+
+        function updateOrderStatus(status) {
+            let order = JSON.parse(localStorage.getItem('activeOrder')) || { orderId: "EXP-984210", date: "2026-08-25", item: { name: "Bisrotti - Crunchy Bread with Rich Garlic Flavour", quantity: 1 } };
+            order.status = status;
+            localStorage.setItem('activeOrder', JSON.stringify(order));
+            renderStatus(status);
+        }
+
+        function renderStatus(status) {
+            const badge = document.getElementById('badgeStatus');
+            const progressLine = document.getElementById('progressLine');
+            
+            const c1 = document.getElementById('step1Circle');
+            const c2 = document.getElementById('step2Circle');
+            const c3 = document.getElementById('step3Circle');
+            
+            const t2 = document.getElementById('step2Text');
+            const t3 = document.getElementById('step3Text');
+
+            if (status === 'processing') {
+                badge.innerText = "Processing";
+                badge.className = "inline-block px-3 py-1 bg-amber-100 text-amber-800 rounded-full text-xs font-extrabold uppercase tracking-wider";
+                progressLine.style.width = "0%";
+                
+                c2.className = "w-10 h-10 rounded-full bg-rose-100 text-rose-400 font-black flex items-center justify-center text-xs shadow-sm border-2 border-white";
+                c3.className = "w-10 h-10 rounded-full bg-rose-100 text-rose-400 font-black flex items-center justify-center text-xs shadow-sm border-2 border-white";
+                t2.className = "text-xs font-bold text-gray-400 mt-2";
+                t3.className = "text-xs font-bold text-gray-400 mt-2";
+            } 
+            else if (status === 'shipped') {
+                badge.innerText = "Shipped Out";
+                badge.className = "inline-block px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-extrabold uppercase tracking-wider";
+                progressLine.style.width = "50%";
+                
+                c2.className = "w-10 h-10 rounded-full bg-rose-600 text-white font-black flex items-center justify-center text-xs shadow-md border-2 border-white";
+                c2.innerText = "✓";
+                t2.className = "text-xs font-bold text-rose-950 mt-2";
+                
+                c3.className = "w-10 h-10 rounded-full bg-rose-100 text-rose-400 font-black flex items-center justify-center text-xs shadow-sm border-2 border-white";
+                t3.className = "text-xs font-bold text-gray-400 mt-2";
+            } 
+            else if (status === 'delivered') {
+                badge.innerText = "Delivered";
+                badge.className = "inline-block px-3 py-1 bg-emerald-100 text-emerald-800 rounded-full text-xs font-extrabold uppercase tracking-wider";
+                progressLine.style.width = "100%";
+                
+                c2.className = "w-10 h-10 rounded-full bg-rose-600 text-white font-black flex items-center justify-center text-xs shadow-md border-2 border-white";
+                c2.innerText = "✓";
+                t2.className = "text-xs font-bold text-rose-950 mt-2";
+
+                c3.className = "w-10 h-10 rounded-full bg-rose-600 text-white font-black flex items-center justify-center text-xs shadow-md border-2 border-white";
+                c3.innerText = "✓";
+                t3.className = "text-xs font-bold text-rose-950 mt-2";
+            }
+        }
+    </script>
+
+</body>
+</html>
